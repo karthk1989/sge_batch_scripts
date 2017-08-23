@@ -12,7 +12,7 @@
 
 {
 
- std::string str_save1 = "prod_xsec_cov.root";
+ std::string str_save1 = "1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root";
  const char* save1 = str_save1.c_str();
 
   int dets = 0;
@@ -33,8 +33,12 @@
   bool b_nd9_fv7_h10 = true;	if( b_nd9_fv7_h10 ) dets++; 
 
   bool b_fhc = true;  bool b_rhc = true;  if(b_fhc && b_rhc) dets=dets*2;
-
   
+  //Set up for the covariance calculation
+  const int nthrows = 100;
+  const int nbins = 20;
+  const int ndet = dets;
+
   
   std::string NAME = "PRODX";  std::string systDir = "../out/prodx_outputs/";
   std::string nomDir = "../out/nominal_outputs/";
@@ -73,18 +77,13 @@
       
 
 
-   //Set up for the covariance calculation
-   const int nthrows = 100;
-   const int nbins = 20;
-   const int ndet = dets;
-
    
    char filePrefix[ ndet ][200];   
    char nomFile[ ndet ][200]   ;   
    
    int it = 0; 
-   if( b_sk_1 && b_fhc ){ 	{ strcpy( filePrefix[it], sk_1_fhc.c_str() ) ;  	strcpy( nomFile[it], N_sk_1_fhc.c_str() ) ;  it++ ; 		}
-   if( b_sk_1 && b_rhc ){	{ strcpy( filePrefix[it], sk_1_rhc.c_str() ) ;  	strcpy( nomFile[it], N_sk_1_rhc.c_str() ) ;  it++ ; 		}
+   if( b_sk_1 && b_fhc ) 	{ strcpy( filePrefix[it], sk_1_fhc.c_str() ) ;  	strcpy( nomFile[it], N_sk_1_fhc.c_str() ) ;  it++ ; 		}
+   if( b_sk_1 && b_rhc )	{ strcpy( filePrefix[it], sk_1_rhc.c_str() ) ;  	strcpy( nomFile[it], N_sk_1_rhc.c_str() ) ;  it++ ; 		}
    if( b_hktoch_2 && b_fhc )	{ strcpy( filePrefix[it], hktoch_2_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hktoch_2_fhc.c_str() ) ;  it++ ; 	}
    if( b_hktoch_2 && b_rhc )	{ strcpy( filePrefix[it], hktoch_2_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hktoch_2_rhc.c_str() ) ;  it++ ;		}
    if( b_hkhak_3 && b_fhc )	{ strcpy( filePrefix[it], hkhak_3_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkhak_3_fhc.c_str() ) ;  it++ ; 		}
@@ -142,10 +141,10 @@
           if(nomvals[iter]!=nomvals[iter]) nomvals[iter] = 0.;
           iter++;
        }  
-     } 
-   }    
-
-
+     }  
+     fnom->Close(); 
+   }  
+   delete fnom; 
 
 
    //Build the covariance matrix from the throws
@@ -154,6 +153,7 @@
    TFile *fthrow;
    TH1D *tmp2;
    for(int n=0; n<nthrows; n++){
+     std::cout<<" Throw " << n << std::endl;
      int iter = 0;
      for(int i=0; i<ndet; i++){
        fthrow = new TFile(Form("%s_%d.root",filePrefix[i],n));
@@ -164,9 +164,11 @@
             if(throws[iter]!=throws[iter]) throws[iter] = 0.;
             iter++;
          }
-       }
-       fthrow->Close();
-     }
+       }  
+       fthrow->Close(); 
+     }  
+     delete fthrow;
+     
      for(int i=0; i<nEntries; i++){
        //std::cout << nomvals[i] << std::endl;
        for(int j=0; j<nEntries; j++){
@@ -176,10 +178,11 @@
        }
      }  
    }
-
-   TFile *fout = new TFile( save1 ,"RECREATE");
-   cov->Write("prod_xsec_cov");
-   fout->Close();
+   
+  std::cout<<" --- Saving cov --- " << std::endl;
+  TFile *fout = new TFile( save1 ,"RECREATE");
+  cov->Write("prod_xsec_cov");
+  fout->Close();
 
 }     
 
