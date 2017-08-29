@@ -9,10 +9,21 @@
 
 // Each det has 20*4=80 bins per horn polarity
 
-// skfhc, skrhc, hk2fhc, hk2rhc, nd280baskfhc, nd280baskrhc, e61
+// skfhc, skrhc, hk2fhc, hk2rhc, nd280baskfhc, nd280baskrhc, IWCD
 
 // note - cov bins labeled from 0-(N-1)
 //      - histo bins labeled from 1-N
+
+// 2D histo - config A //
+// **********************
+// sk     -fhc	(1,80),    	sk     -rhc	(81-160)
+// nd280  -fhc	(161,240), 	hk     -rhc	(241-320)
+// IWCD-1 -fhc	(321,400), 	nd280  -rhc	(401, 480)
+// IWCD-2 -fhc	(481,560), 	IWCD-1 -rhc	(561,640)
+//
+//
+// hk
+
 {	
 
   // --- XXX --- THINGS TO EDIT --- XXX --- ///
@@ -28,19 +39,7 @@
   const int nRows =  nflavours* nbins * ndets ;
   std::cout<<" nRows = " << nRows << std::endl;
 			
-		//const int nRows = 2240;
-		//const int binOffset = 0;
-		
-		//const int nRows = 800;   
-		//const int binOffset = 0;
-		
-		//const int nRows = 1440; 
-		//const int binOffset = 800; 
-		
 
-		
-	// far dets:   4 * 20 * 5*2 = 800
-	// near dets:  4 * 20 * 9*2 = 1440
  
   TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
   TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
@@ -67,9 +66,9 @@
 	//  +1 because first histo bin is bin1  (bin0 is overlfow)
 	hist->SetBinContent( irow+1, jcolumn+1, e );
 
-        std::cout<<" irow+1 = " << irow+1 << ", jcolumn+1 = " << jcolumn+1 <<",    element = " << e << std::endl;
-	//if(e > 0.0085) std::cout<<" e > 0.0085:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
-	//if(e < -0.0018) std::cout<<" e < -0.018:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
+        // std::cout<<" irow+1 = " << irow+1 << ", jcolumn+1 = " << jcolumn+1 <<",    element = " << e << std::endl;
+	if(e > 0.0085) std::cout<<" e > 0.0085:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
+	if(e < -0.002) std::cout<<" e < -0.002:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
 
         if( e < min ) min =e;
         if( e > max ) max =e;
@@ -77,7 +76,8 @@
     }
   std::cout<<" min = " << min <<std::endl;
   std::cout<<" max = " << max <<std::endl;
-
+  std::cout<<" nRows = " << nRows << std::endl;
+ 
 	// doesn't work
 	//new TCanvas;
 	//matT->Draw("");
@@ -98,38 +98,46 @@
 	TColor::CreateGradientColorTable(Number,Length,Red,Green,Blue,nb);
 	  */
 
-	TCanvas* c1 = new TCanvas;
-	gPad->SetRightMargin(0.15);
+	TCanvas* c1 = new TCanvas("prod_xsec_cov_large", "prod_xsec_cov_large", 4200, 4200);
+	gPad->SetRightMargin(0.16);
 	gStyle->SetOptStat(0);	// remove title
 	gStyle->SetOptTitle(0);	// remove stat box
 	//gStyle->SetLegendBorderSize(0); 	// remove border on legend
 
 	//double m = TMath::Max(hist->GetMaximum(),-hist->GetMinimum());
-	//hist->GetZaxis()->SetRangeUser(0.0007, 0.0009);
-	
 	//hist->GetZaxis()->SetRangeUser( min, max);
 	//hist->GetZaxis()->SetRangeUser( -max, max);
 	//hist->GetZaxis()->SetRangeUser( min, -min);
 	//hist->GetZaxis()->SetRangeUser( 0.02, -0.02);
 	//hist->GetZaxis()->SetRangeUser( -4, 4);
-	
-	//hist->GetXaxis()->SetRangeUser(0, 10);
-	//hist->GetYaxis()->SetRangeUser(-1,1);
+
 	Int_t nb = 5000;
-	 hist->SetContour(nb);
-
+	hist->SetContour(nb);
 	hist->Draw("colz");
-	c1->SaveAs("prod_xsec_cov.png");
-	//c1->SaveAs("na61_cov_farDets_50throw_(min,max).png");
-	//c1->SaveAs("na61_cov_nearDets_50throw_(min,max).png");.ls
+	c1->SaveAs("prod_xsec_cov_large.png");
+	c1->SaveAs("prod_xsec_cov_large.pdf");
+	c1->SaveAs("prod_xsec_cov_large.eps");
+
+        TCanvas* c1_small = new TCanvas("prod_xsec_cov_small", "prod_xsec_cov_small", 1000, 1000);
+        gPad->SetRightMargin(0.16);
+        gStyle->SetOptStat(0);  // remove title
+        gStyle->SetOptTitle(0); // remove stat box
+        //gStyle->SetLegendBorderSize(0);       // remove border on legend
+	hist->Draw("colz");
+      	c1_small->SaveAs("prod_xsec_cov_small.png");
+	c1_small->SaveAs("prod_xsec_cov_small.pdf");
+	c1_small->SaveAs("prod_xsec_cov_small.eps");
+
+
 	
 
-	TCanvas* c2 = new TCanvas;
-	gPad->SetRightMargin(0.15);
+
+        TCanvas* c2 = new TCanvas("prod_xsec_cov_bins_0_320", "prod_xsec_cov_bins_0_320", 1000, 1000);;
+	gPad->SetRightMargin(0.16);
 	gStyle->SetOptStat(0);	// remove title
 	gStyle->SetOptTitle(0);	// remove stat box
-	hist->GetXaxis()->SetRangeUser(0, 800);
-	hist->GetYaxis()->SetRangeUser(0, 800);
+	hist->GetXaxis()->SetRangeUser(0, 320);
+	hist->GetYaxis()->SetRangeUser(0, 320);
 	hist->Draw("colz");
 	
 
