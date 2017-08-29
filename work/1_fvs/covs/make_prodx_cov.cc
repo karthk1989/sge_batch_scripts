@@ -38,6 +38,7 @@
   const int nthrows = 100;
   const int nbins = 20;
   const int ndet = dets;
+  std::cout<<" ndet = " << dets << std::endl;
 
   
   std::string NAME = "PRODX";  std::string systDir = "../out/prodx_outputs/";
