@@ -47,9 +47,14 @@ LOG=./qsub.log
 echo "$0 Starting at $(date)" >>$LOG
 
 
-let "N=$1-1"
+#let "N=$1-1"
+#if [ N > 50 ]; then
+#  echo 'The maximum number of throws is 50.  Generating 50 throws'
+#  N=50
+#fi
 
-for i in $(seq 0 $N)
+#for i in $(seq 0 $N)
+for i in $(seq 0 50)
 do 
   echo qsub -q sge_pbeamx_job.sh $i  >>$LOG
   qsub -l h_rss=2G,h_vmem=2G  -q SL6 sge_pbeamx_job.sh $i  |tee -a $LOG

@@ -46,8 +46,9 @@ fi
 LOG=./qsub.log
 echo "$0 Starting at $(date)" >>$LOG
 
-
-let "N=$1-1"
+# subtract one as usual, but then plus one to account for extra throw for new nominal
+# the job file submits  throw-1
+let "N=$1-1+1"
 
 for i in $(seq 0 $N)
 do 
