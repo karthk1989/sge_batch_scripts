@@ -47,12 +47,12 @@ LOG=./qsub.log
 echo "$0 Starting at $(date)" >>$LOG
 
 
-let "N=$1-1"
+#let "N=$1-1"
 
-for i in $(seq 0 $N)
-do 
-  echo qsub -q sge_harp_job.sh $i  >>$LOG
-  qsub -l h_rss=2G,h_vmem=2G  -q SL6 sge_harp_job.sh $i  |tee -a $LOG
-done
+#for i in $(seq 0 $N)
+#do 
+  echo qsub -q sge_harp_job.sh 0  >>$LOG
+  qsub -l h_rss=2G,h_vmem=2G  -q SL6 sge_harp_job.sh 0  |tee -a $LOG
+#done
 
 
