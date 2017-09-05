@@ -30,7 +30,7 @@
   bool b_hktoch_2 = true;	if( b_hktoch_2 ) dets++;
   bool b_hkhak_3 = false;	if( b_hkhak_3 ) dets++;
   bool b_hkkbis_4 = false;	if( b_hkkbis_4 ) dets++;
-  bool b_hktoch_5 = false;	if( b_hktoch_5 ) dets++;
+  bool b_hkkboh_5 = false;	if( b_hkkboh_5 ) dets++;
   bool b_fhc = true;  bool b_rhc = true;  if(b_fhc && b_rhc) dets=dets*2;
   
   //Set up for the covariance calculation
@@ -57,7 +57,7 @@
  std::string  hktoch_2_fhc= systDir+"2_hktoch_fhc_" + NAME;		std::string  hktoch_2_rhc= systDir+"2_hktoch_rhc_" + NAME;	
  std::string  hkhak_3_fhc= systDir+"3_hkhak_fhc_" + NAME;		std::string  hkhak_3_rhc= systDir+"3_hkhak_rhc_" + NAME;	
  std::string  hkkbis_4_fhc= systDir+"4_hkkbis_fhc_" + NAME;		std::string  hkkbis_4_rhc= systDir+"4_hkkbis_rhc_" + NAME;	
- std::string  hktoch_5_fhc= systDir+"5_hkkboh_fhc_" + NAME;		std::string  hktoch_5_rhc= systDir+"5_hkkboh_rhc_" + NAME;	
+ std::string  hkkboh_5_fhc= systDir+"5_hkkboh_fhc_" + NAME;		std::string  hkkboh_5_rhc= systDir+"5_hkkboh_rhc_" + NAME;	
 
  
  std::string  N_sk_1_fhc= nomDir+"1_sk_fhc_NOM_.root";			std::string  N_sk_1_rhc= nomDir+"1_sk_rhc_NOM_.root";				
@@ -73,7 +73,7 @@
  std::string  N_hktoch_2_fhc= nomDir+"2_hktoch_fhc_NOM_.root";		std::string  N_hktoch_2_rhc= nomDir+"2_hktoch_rhc_NOM_.root";		
  std::string  N_hkhak_3_fhc= nomDir+"3_hkhak_fhc_NOM_.root";		std::string  N_hkhak_3_rhc= nomDir+"3_hkhak_rhc_NOM_.root";		
  std::string  N_hkkbis_4_fhc= nomDir+"4_hkkbis_fhc_NOM_.root";		std::string  N_hkkbis_4_rhc= nomDir+"4_hkkbis_rhc_NOM_.root";		
- std::string  N_hktoch_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hktoch_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
+ std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hkknoh_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
     
 
 
@@ -108,8 +108,8 @@
    if( b_hkhak_3 && b_rhc )	{ strcpy( filePrefix[it], hkhak_3_rhc.c_str() ) ;      	strcpy( nomFile[it], N_hkhak_3_rhc.c_str() ) ;  it++ ;		}
    if( b_hkkbis_4 && b_fhc )	{ strcpy( filePrefix[it], hkkbis_4_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkkbis_4_fhc.c_str() ) ;  it++ ;		}
    if( b_hkkbis_4 && b_rhc )	{ strcpy( filePrefix[it], hkkbis_4_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkbis_4_rhc.c_str() ) ;  it++ ;		}
-   if( b_hktoch_5 && b_fhc )	{ strcpy( filePrefix[it], hktoch_5_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hktoch_5_fhc.c_str() ) ;  it++ ;		}
-   if( b_hktoch_5 && b_rhc )	{ strcpy( filePrefix[it], hktoch_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hktoch_5_rhc.c_str() ) ;  it++ ;		}
+   if( b_hkkboh_5 && b_fhc )	{ strcpy( filePrefix[it], hkkboh_5_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkkboh_5_fhc.c_str() ) ;  it++ ;		}
+   if( b_hkkbph_5 && b_rhc )	{ strcpy( filePrefix[it], hkkboh_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkboh_5_rhc.c_str() ) ;  it++ ;		}
   
 
         
