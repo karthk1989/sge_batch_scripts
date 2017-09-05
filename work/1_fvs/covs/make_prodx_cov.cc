@@ -108,8 +108,8 @@
    if( b_hkhak_3 && b_rhc )	{ strcpy( filePrefix[it], hkhak_3_rhc.c_str() ) ;      	strcpy( nomFile[it], N_hkhak_3_rhc.c_str() ) ;  it++ ;		}
    if( b_hkkbis_4 && b_fhc )	{ strcpy( filePrefix[it], hkkbis_4_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkkbis_4_fhc.c_str() ) ;  it++ ;		}
    if( b_hkkbis_4 && b_rhc )	{ strcpy( filePrefix[it], hkkbis_4_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkbis_4_rhc.c_str() ) ;  it++ ;		}
-   if( b_hktoch_2_5 && b_fhc )	{ strcpy( filePrefix[it], hktoch_5_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hktoch_5_fhc.c_str() ) ;  it++ ;		}
-   if( b_hktoch_2_5 && b_rhc )	{ strcpy( filePrefix[it], hktoch_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hktoch_5_rhc.c_str() ) ;  it++ ;		}
+   if( b_hktoch_5 && b_fhc )	{ strcpy( filePrefix[it], hktoch_5_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hktoch_5_fhc.c_str() ) ;  it++ ;		}
+   if( b_hktoch_5 && b_rhc )	{ strcpy( filePrefix[it], hktoch_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hktoch_5_rhc.c_str() ) ;  it++ ;		}
   
 
         
