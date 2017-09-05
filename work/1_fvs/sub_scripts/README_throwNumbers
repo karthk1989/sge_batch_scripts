@@ -1,0 +1,65 @@
+Note, for systs throw=-1 gives nominal
+
+nominal
+- 1 throw
+- condor:  queue 1
+- sge: no throw arument (  no loop argument)
+
+na61 
+- up to 500 throws:  0 to 499  (throw -1, or no throw, gives nominal)
+- condor:  queue 500
+- sge:  0 to 499  ( loop argument=500 )
+
+bmpt
+- 1 throw/variation
+- condor:  queue 1
+- sge:  0  ( no loop argument )
+
+alttert
+- 1 throw/variation
+- condor:  queue 1
+- sge:  0  (no loop argument )
+
+snmult
+- do not compare to normal nominal, create own nominal -1
+- need to compare to throw=-1
+- up to 500 syst throws + 1 nom throw = 501 throws
+- condor queue 501
+- sge:  -1 to 500  (loop argument=500)
+
+snleadbar
+- 2 throws/variations
+- condor:  queue 2
+- sge: 0 to 1  (no loop argument)
+
+snextbar
+- 1 throw/variation
+- condor:  queue 1
+- sge:  0  (no loop argument)
+
+harp
+- 1 throw/variation
+- condor:  queue 1
+- sge:  0  (no loop argument)
+
+prodx
+- up to 500 throws
+- condor:  queue 100
+- sge:  0 to 499  (loop argument=500)
+
+oaax
+- - condor:  queue 2
+- sge: 0 to 1  (no loop argument)
+
+oaay
+- condor:  queue 2
+- sge: 0 to 1  (no loop argument)
+
+pbeamx
+- condor:  queue 50
+- sge: 0 to 50  (no loop argument) 
+
+pbeamy:
+- condor:  queue 50
+- sge: 0 to 50  (no loop argument) 
+
