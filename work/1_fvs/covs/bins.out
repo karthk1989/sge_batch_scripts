@@ -31,34 +31,34 @@ det 29:   low bin= 2241  high bin= 2320:   numu=2241-2260, anumu=2261-2280, nue=
 det 30:   low bin= 2321  high bin= 2400:   numu=2321-2340, anumu=2341-2360, nue=2361-2380, anue=2381-2400
 
 
-const int det_1_lowBin=2401;   const int det_1_highBin=2480:        numu=2401-2420, anumu=2421-2440, nue=2441-2460, anue=2461-2480
-const int det_2_lowBin=2481;   const int det_2_highBin=2560:        numu=2481-2500, anumu=2501-2520, nue=2521-2540, anue=2541-2560
-const int det_3_lowBin=2561;   const int det_3_highBin=2640:        numu=2561-2580, anumu=2581-2600, nue=2601-2620, anue=2621-2640
-const int det_4_lowBin=2641;   const int det_4_highBin=2720:        numu=2641-2660, anumu=2661-2680, nue=2681-2700, anue=2701-2720
-const int det_5_lowBin=2721;   const int det_5_highBin=2800:        numu=2721-2740, anumu=2741-2760, nue=2761-2780, anue=2781-2800
-const int det_6_lowBin=2801;   const int det_6_highBin=2880:        numu=2801-2820, anumu=2821-2840, nue=2841-2860, anue=2861-2880
-const int det_7_lowBin=2881;   const int det_7_highBin=2960:        numu=2881-2900, anumu=2901-2920, nue=2921-2940, anue=2941-2960
-const int det_8_lowBin=2961;   const int det_8_highBin=3040:        numu=2961-2980, anumu=2981-3000, nue=3001-3020, anue=3021-3040
-const int det_9_lowBin=3041;   const int det_9_highBin=3120:        numu=3041-3060, anumu=3061-3080, nue=3081-3100, anue=3101-3120
-const int det_10_lowBin=3121;  const int det_10_highBin=3200:       numu=3121-3140, anumu=3141-3160, nue=3161-3180, anue=3181-3200
-const int det_11_lowBin=3201;  const int det_11_highBin=3280:       numu=3201-3220, anumu=3221-3240, nue=3241-3260, anue=3261-3280
-const int det_12_lowBin=3281;  const int det_12_highBin=3360:       numu=3281-3300, anumu=3301-3320, nue=3321-3340, anue=3341-3360
-const int det_13_lowBin=3361;  const int det_13_highBin=3440:       numu=3361-3380, anumu=3381-3400, nue=3401-3420, anue=3421-3440
-const int det_14_lowBin=3441;  const int det_14_highBin=3520:       numu=3441-3460, anumu=3461-3480, nue=3481-3500, anue=3501-3520
-const int det_15_lowBin=3521;  const int det_15_highBin=3600:       numu=3521-3540, anumu=3541-3560, nue=3561-3580, anue=3581-3600
-const int det_16_lowBin=3601;  const int det_16_highBin=3680:       numu=3601-3620, anumu=3621-3640, nue=3641-3660, anue=3661-3680
-const int det_17_lowBin=3681;  const int det_17_highBin=3760:       numu=3681-3700, anumu=3701-3720, nue=3721-3740, anue=3741-3760
-const int det_18_lowBin=3761;  const int det_18_highBin=3840:       numu=3761-3780, anumu=3781-3800, nue=3801-3820, anue=3821-3840
-const int det_19_lowBin=3841;  const int det_19_highBin=3920:       numu=3841-3860, anumu=3861-3880, nue=3881-3900, anue=3901-3920
-const int det_20_lowBin=3921;  const int det_20_highBin=4000:       numu=3921-3940, anumu=3941-3960, nue=3961-3980, anue=3981-4000
-const int det_21_lowBin=4001;  const int det_21_highBin=4080:       numu=4001-4020, anumu=4021-4040, nue=4041-4060, anue=4061-4080
-const int det_22_lowBin=4081;  const int det_22_highBin=4160:       numu=4081-4100, anumu=4101-4120, nue=4121-4140, anue=4141-4160
-const int det_23_lowBin=4161;  const int det_23_highBin=4240:       numu=4161-4180, anumu=4181-4200, nue=4201-4220, anue=4221-4240
-const int det_24_lowBin=4241;  const int det_24_highBin=4320:       numu=4241-4260, anumu=4261-4280, nue=4281-4300, anue=4301-4320
-const int det_25_lowBin=4321;  const int det_25_highBin=4400:       numu=4321-4340, anumu=4341-4360, nue=4361-4380, anue=4381-4400
-const int det_26_lowBin=4401;  const int det_26_highBin=4480:       numu=4401-4420, anumu=4421-4440, nue=4441-4460, anue=4461-4480
-const int det_27_lowBin=4481;  const int det_27_highBin=4560:       numu=4481-4500, anumu=4501-4520, nue=4521-4540, anue=4541-4560
-const int det_28_lowBin=4561;  const int det_28_highBin=4640:       numu=4561-4580, anumu=4581-4600, nue=4601-4620, anue=4621-4640
-const int det_29_lowBin=4641;  const int det_29_highBin=4720:       numu=4641-4660, anumu=4661-4680, nue=4681-4700, anue=4701-4720
-const int det_30_lowBin=4721;  const int det_30_highBin=4800:       numu=4721-4740, anumu=4741-4760, nue=4761-4780, anue=4781-4800
+const int det_1_lowBin=2401;   const int det_1_highBin=2480;    //  numu=2401-2420, anumu=2421-2440, nue=2441-2460, anue=2461-2480
+const int det_2_lowBin=2481;   const int det_2_highBin=2560;    //  numu=2481-2500, anumu=2501-2520, nue=2521-2540, anue=2541-2560
+const int det_3_lowBin=2561;   const int det_3_highBin=2640;    //  numu=2561-2580, anumu=2581-2600, nue=2601-2620, anue=2621-2640
+const int det_4_lowBin=2641;   const int det_4_highBin=2720;    //  numu=2641-2660, anumu=2661-2680, nue=2681-2700, anue=2701-2720
+const int det_5_lowBin=2721;   const int det_5_highBin=2800;    //  numu=2721-2740, anumu=2741-2760, nue=2761-2780, anue=2781-2800
+const int det_6_lowBin=2801;   const int det_6_highBin=2880;    //  numu=2801-2820, anumu=2821-2840, nue=2841-2860, anue=2861-2880
+const int det_7_lowBin=2881;   const int det_7_highBin=2960;    //  numu=2881-2900, anumu=2901-2920, nue=2921-2940, anue=2941-2960
+const int det_8_lowBin=2961;   const int det_8_highBin=3040;    //  numu=2961-2980, anumu=2981-3000, nue=3001-3020, anue=3021-3040
+const int det_9_lowBin=3041;   const int det_9_highBin=3120;    //  numu=3041-3060, anumu=3061-3080, nue=3081-3100, anue=3101-3120
+const int det_10_lowBin=3121;  const int det_10_highBin=3200;   //  numu=3121-3140, anumu=3141-3160, nue=3161-3180, anue=3181-3200
+const int det_11_lowBin=3201;  const int det_11_highBin=3280;   //  numu=3201-3220, anumu=3221-3240, nue=3241-3260, anue=3261-3280
+const int det_12_lowBin=3281;  const int det_12_highBin=3360;   //  numu=3281-3300, anumu=3301-3320, nue=3321-3340, anue=3341-3360
+const int det_13_lowBin=3361;  const int det_13_highBin=3440;   //  numu=3361-3380, anumu=3381-3400, nue=3401-3420, anue=3421-3440
+const int det_14_lowBin=3441;  const int det_14_highBin=3520;   //  numu=3441-3460, anumu=3461-3480, nue=3481-3500, anue=3501-3520
+const int det_15_lowBin=3521;  const int det_15_highBin=3600;   //  numu=3521-3540, anumu=3541-3560, nue=3561-3580, anue=3581-3600
+const int det_16_lowBin=3601;  const int det_16_highBin=3680;   //  numu=3601-3620, anumu=3621-3640, nue=3641-3660, anue=3661-3680
+const int det_17_lowBin=3681;  const int det_17_highBin=3760;   //  numu=3681-3700, anumu=3701-3720, nue=3721-3740, anue=3741-3760
+const int det_18_lowBin=3761;  const int det_18_highBin=3840;   //  numu=3761-3780, anumu=3781-3800, nue=3801-3820, anue=3821-3840
+const int det_19_lowBin=3841;  const int det_19_highBin=3920;   //  numu=3841-3860, anumu=3861-3880, nue=3881-3900, anue=3901-3920
+const int det_20_lowBin=3921;  const int det_20_highBin=4000;   //  numu=3921-3940, anumu=3941-3960, nue=3961-3980, anue=3981-4000
+const int det_21_lowBin=4001;  const int det_21_highBin=4080;   //  numu=4001-4020, anumu=4021-4040, nue=4041-4060, anue=4061-4080
+const int det_22_lowBin=4081;  const int det_22_highBin=4160;   //  numu=4081-4100, anumu=4101-4120, nue=4121-4140, anue=4141-4160
+const int det_23_lowBin=4161;  const int det_23_highBin=4240;   //  numu=4161-4180, anumu=4181-4200, nue=4201-4220, anue=4221-4240
+const int det_24_lowBin=4241;  const int det_24_highBin=4320;   //  numu=4241-4260, anumu=4261-4280, nue=4281-4300, anue=4301-4320
+const int det_25_lowBin=4321;  const int det_25_highBin=4400;   //  numu=4321-4340, anumu=4341-4360, nue=4361-4380, anue=4381-4400
+const int det_26_lowBin=4401;  const int det_26_highBin=4480;   //  numu=4401-4420, anumu=4421-4440, nue=4441-4460, anue=4461-4480
+const int det_27_lowBin=4481;  const int det_27_highBin=4560;   //  numu=4481-4500, anumu=4501-4520, nue=4521-4540, anue=4541-4560
+const int det_28_lowBin=4561;  const int det_28_highBin=4640;   //  numu=4561-4580, anumu=4581-4600, nue=4601-4620, anue=4621-4640
+const int det_29_lowBin=4641;  const int det_29_highBin=4720;   //  numu=4641-4660, anumu=4661-4680, nue=4681-4700, anue=4701-4720
+const int det_30_lowBin=4721;  const int det_30_highBin=4800;   //  numu=4721-4740, anumu=4741-4760, nue=4761-4780, anue=4781-4800
 
