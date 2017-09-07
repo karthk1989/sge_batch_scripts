@@ -261,10 +261,13 @@ const int det_30_lowBin=2321;  const int det_30_highBin=2400;  //  numu=2321-234
 
   //TH2D* h_corr_det = new TH2D("h_corr_det", "h_corr_det", nBinsPerDet, 0, nBinsPerDet, nBinsPerDet, 0, nBinsPerDet );
   //TH2D h_corr_det = T2HD("h_corr_det", "h_corr_det", nBinsPerDet, 0, nBinsPerDet, nBinsPerDet, 0, nBinsPerDet );
-   std::string str_det_1 = "1_sk_fhc";
-   int det1 = cutOutDet_corr(  h_corr, det_1_lowBin,  det_1_highBin,  nBinsPerDet,  str_det_1, str_syst );
-   //  std::cout<<" TEST h_corr_det->GetBinContent( 2,2 ) = " << h_corr_det->GetBinContent( 2,2 ) << std::endl;
+  std::string str_det_1 = "1_sk_fhc";
+  int det1_corr = cutOutDet_corr(  h_corr, det_1_lowBin,  det_1_highBin,  nBinsPerDet,  str_det_1, str_syst );
+  int det1_err = getErrosFromCov( h_cov,  det_1_lowBin, det_1_highBin,  nBinsPerDet,  str_det_1 , str_syst );
 
+  std::string str_det_2 = "1_sk_rhc";
+  int det2_corr = cutOutDet_corr(  h_corr, det_2_lowBin,  det_2_highBin,  nBinsPerDet,  str_det_2, str_syst );
+  int det2_err = getErrosFromCov( h_cov,  det_2_lowBin, det_2_highBin,  nBinsPerDet,  str_det_2 , str_syst );
 
 
 
@@ -311,11 +314,18 @@ const int nd5_higher = 240;
 
 
 
+
+exit();
+
   // loop over the covariance matrix diagonal elements
   // cov_ii = var_i = (sig_i)^2
   // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
 
 //std::cout<<"debug 1" << std::endl;
+
+
+/*
+
 
   double var_corr_nd5_fhc[ nBinsPerDet ];
   double err_corr_nd5_fhc[ nBinsPerDet ];
@@ -388,7 +398,7 @@ int what(){
   return 4;
 }
 
-
+*/
 
 
 
@@ -440,31 +450,36 @@ int cutOutDet_corr( TH2D* h_corr,  const int lowBin, const int highBin, const in
   c_corr_det->SaveAs(save_det_syst_pdf);
   c_corr_det->SaveAs(save_det_syst_eps);
 
+std::cout<<" saving" << std::endl;
+
+
+
+  return 0;
+
+}
 
 
 
 
+int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const int nBinsPerDet, std::string str_det, std::string str_syst ){
 
-
+  int lb=lowBin, hb=highBin;
 
   //////// Retrieving the errors from diag of full cov ///////
   std::cout<<" --- Retrieving the errors from diag of full cov --- " << std::endl;
 
 
-
-
-
-  double var_corr_nd5_fhc[ nBinsPerDet ];
+  double var_det[ nBinsPerDet ];
   double err_corr_nd5_fhc[ nBinsPerDet ];
 
   for( int irow=0; irow<nBinsPerDet; irow++){
 
     // h_cov starts at bin1, array starts at element 0
-    std::cout<<" h_cov ( " <<  irow + nd5_lower <<" ," <<  irow + nd5_lower  << " = " <<
-      h_cov->GetBinContent( irow + nd5_lower, irow + nd5_lower ) << std::endl;
+    std::cout<<" h_cov ( " <<  irow + lowBin <<" ," <<  irow + lowBin  << " = " <<
+      h_cov->GetBinContent( irow + lowBin, irow + lowBin ) << std::endl;
     
-    var_corr_nd5_fhc[irow] = h_cov->GetBinContent( irow + nd5_lower, irow + nd5_lower );
-    err_corr_nd5_fhc[irow] = sqrt( var_corr_nd5_fhc[irow] );    
+    var_det[irow] = h_cov->GetBinContent( irow + lowBin, irow + lowBin );
+    err_corr_nd5_fhc[irow] = sqrt( var_det[irow] );    
   }
 
   const int nBinsFlav=20;
@@ -516,9 +531,25 @@ int cutOutDet_corr( TH2D* h_corr,  const int lowBin, const int highBin, const in
 
 
 
+  
+  //std::string str_save_det_syst = str_det +"_"+ str_syst +"_errs";
+
+  std::string str_save_det_syst_png = str_det +"_"+ str_syst +"_errs.png";
+  std::string str_save_det_syst_pdf = str_det +"_"+ str_syst +"_errs.pdf";
+  std::string str_save_det_syst_eps = str_det +"_"+ str_syst +"_errs.eps";
+
+  const char* save_det_syst_png = str_save_det_syst_png.c_str();
+  const char* save_det_syst_pdf = str_save_det_syst_pdf.c_str();
+  const char* save_det_syst_eps = str_save_det_syst_eps.c_str();
+
+  c_err_nd5_fhc->SaveAs(save_det_syst_png);
+  c_err_nd5_fhc->SaveAs(save_det_syst_pdf);
+  c_err_nd5_fhc->SaveAs(save_det_syst_eps);
 
 
+std::cout<<" saving" << std::endl;
 
+c_err_nd5_fhc->SaveAs("fuck.png");
   return 0;
 }
 
