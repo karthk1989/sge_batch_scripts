@@ -15,6 +15,8 @@
   std::cout<<""<<std::endl;
   std::cout<<""<<std::endl;
 
+
+  binLow=1;
     for( int i=1; i<31; i++ ){
 
       std::cout << "const int det_"<<i<<"_lowBin="<< binLow << ";  const int det_"<<i<<"_highBin=" << binLow+79 << ";  //"
