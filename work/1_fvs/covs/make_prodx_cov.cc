@@ -13,7 +13,9 @@
 {
 
  //std::string str_save1 = "1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root";
- std::string str_save1 = "2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root";
+ //std::string str_save1 = "2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root";
+// std::string str_save1 = "3_fvs__sk_nd5_nd2_nd9h7p7_hk2_hkk4_prod_xsec_cov.root";
+ std::string str_save1 = "4_fvs__sk_nd5_nd9h7p7_hk2_hkk4_prod_xsec_cov.root";
 
  const char* save1 = str_save1.c_str();
 
@@ -41,9 +43,9 @@
   bool b_nd9_fv7_h7p7 = true;	if( b_nd9_fv7_h7p7 ) dets++; 
 
   bool b_hktoch_2 = true;	if( b_hktoch_2 ) dets++;
-  bool b_hkhak_3 =  true;	if( b_hkhak_3 ) dets++;
+  bool b_hkhak_3 =  false;	if( b_hkhak_3 ) dets++;
   bool b_hkkbis_4 = true;	if( b_hkkbis_4 ) dets++;
-  bool b_hkkboh_5 = true;	if( b_hkkboh_5 ) dets++;
+  bool b_hkkboh_5 = false;	if( b_hkkboh_5 ) dets++;
 
   bool b_fhc = true;  bool b_rhc = true;  if(b_fhc && b_rhc) dets=dets*2;
   
@@ -68,13 +70,13 @@
  std::string  nd9_fhc_fv5_h10= systDir+"nd9_fhc_fv5_h10_" + NAME;	std::string  nd9_rhc_fv5_h10= systDir+"nd9_rhc_fv5_h10_" + NAME;
  std::string  nd9_fhc_fv6_h10= systDir+"nd9_fhc_fv6_h10_" + NAME;	std::string  nd9_rhc_fv6_h10= systDir+"nd9_rhc_fv6_h10_" + NAME;
  std::string  nd9_fhc_fv7_h10= systDir+"nd9_fhc_fv7_h10_" + NAME;	std::string  nd9_rhc_fv7_h10= systDir+"nd9_rhc_fv7_h10_" + NAME;
- std::string  nd9_fhc_fv1_h7p7= systDir+"nd9_fhc_fv1_h7p7_" + NAME;	std::string  nd9_rhc_fv1_h10= systDir+"nd9_rhc_fv1_h7p7_" + NAME;
- std::string  nd9_fhc_fv2_h7p7= systDir+"nd9_fhc_fv2_h7p7_" + NAME;	std::string  nd9_rhc_fv2_h10= systDir+"nd9_rhc_fv2_h7p7_" + NAME;
- std::string  nd9_fhc_fv3_h7p7= systDir+"nd9_fhc_fv3_h7p7_" + NAME;	std::string  nd9_rhc_fv3_h10= systDir+"nd9_rhc_fv3_h7p7_" + NAME;
- std::string  nd9_fhc_fv4_h7p7= systDir+"nd9_fhc_fv4_h7p7_" + NAME;	std::string  nd9_rhc_fv4_h10= systDir+"nd9_rhc_fv4_h7p7_" + NAME;
- std::string  nd9_fhc_fv5_h7p7= systDir+"nd9_fhc_fv5_h7p7_" + NAME;	std::string  nd9_rhc_fv5_h10= systDir+"nd9_rhc_fv5_h7p7_" + NAME;
- std::string  nd9_fhc_fv6_h7p7= systDir+"nd9_fhc_fv6_h7p7_" + NAME;	std::string  nd9_rhc_fv6_h10= systDir+"nd9_rhc_fv6_h7p7_" + NAME;
- std::string  nd9_fhc_fv7_h7p7= systDir+"nd9_fhc_fv7_h7p7_" + NAME;	std::string  nd9_rhc_fv7_h10= systDir+"nd9_rhc_fv7_h7p7_" + NAME;
+ std::string  nd9_fhc_fv1_h7p7= systDir+"nd9_fhc_fv1_h7p7_" + NAME;	std::string  nd9_rhc_fv1_h7p7= systDir+"nd9_rhc_fv1_h7p7_" + NAME;
+ std::string  nd9_fhc_fv2_h7p7= systDir+"nd9_fhc_fv2_h7p7_" + NAME;	std::string  nd9_rhc_fv2_h7p7= systDir+"nd9_rhc_fv2_h7p7_" + NAME;
+ std::string  nd9_fhc_fv3_h7p7= systDir+"nd9_fhc_fv3_h7p7_" + NAME;	std::string  nd9_rhc_fv3_h7p7= systDir+"nd9_rhc_fv3_h7p7_" + NAME;
+ std::string  nd9_fhc_fv4_h7p7= systDir+"nd9_fhc_fv4_h7p7_" + NAME;	std::string  nd9_rhc_fv4_h7p7= systDir+"nd9_rhc_fv4_h7p7_" + NAME;
+ std::string  nd9_fhc_fv5_h7p7= systDir+"nd9_fhc_fv5_h7p7_" + NAME;	std::string  nd9_rhc_fv5_h7p7= systDir+"nd9_rhc_fv5_h7p7_" + NAME;
+ std::string  nd9_fhc_fv6_h7p7= systDir+"nd9_fhc_fv6_h7p7_" + NAME;	std::string  nd9_rhc_fv6_h7p7= systDir+"nd9_rhc_fv6_h7p7_" + NAME;
+ std::string  nd9_fhc_fv7_h7p7= systDir+"nd9_fhc_fv7_h7p7_" + NAME;	std::string  nd9_rhc_fv7_h7p7= systDir+"nd9_rhc_fv7_h7p7_" + NAME;
  std::string  hktoch_2_fhc= systDir+"2_hktoch_fhc_" + NAME;		std::string  hktoch_2_rhc= systDir+"2_hktoch_rhc_" + NAME;	
  std::string  hkhak_3_fhc= systDir+"3_hkhak_fhc_" + NAME;		std::string  hkhak_3_rhc= systDir+"3_hkhak_rhc_" + NAME;	
  std::string  hkkbis_4_fhc= systDir+"4_hkkbis_fhc_" + NAME;		std::string  hkkbis_4_rhc= systDir+"4_hkkbis_rhc_" + NAME;	
@@ -101,7 +103,7 @@
  std::string  N_hktoch_2_fhc= nomDir+"2_hktoch_fhc_NOM_.root";		std::string  N_hktoch_2_rhc= nomDir+"2_hktoch_rhc_NOM_.root";		
  std::string  N_hkhak_3_fhc= nomDir+"3_hkhak_fhc_NOM_.root";		std::string  N_hkhak_3_rhc= nomDir+"3_hkhak_rhc_NOM_.root";		
  std::string  N_hkkbis_4_fhc= nomDir+"4_hkkbis_fhc_NOM_.root";		std::string  N_hkkbis_4_rhc= nomDir+"4_hkkbis_rhc_NOM_.root";		
- std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hkknoh_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
+ std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hkkboh_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
     
 
 
