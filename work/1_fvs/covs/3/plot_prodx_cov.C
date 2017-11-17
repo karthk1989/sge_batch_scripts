@@ -28,7 +28,7 @@ int plot_prodx_cov(){
   // --- XXX --- THINGS TO EDIT --- XXX --- ///
 	
   const int nbins = 20;
-  const int ndets = (1+1+1+7 + 4)*2 ;
+  const int ndets = (1+1+1+7 + 2)*2 ;
   const int nflavours = 4;
   const int nBinsPerDet = nbins*nflavours;
 
@@ -42,7 +42,8 @@ int plot_prodx_cov(){
   std::string str_syst = "prod_xsec";
  
 //  TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
-  TFile* TFcov = new TFile("./2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root");
+  //TFile* TFcov = new TFile("./2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root");
+  TFile* TFcov = new TFile("./3_fvs__sk_nd5_nd2_nd9h7p7_hk2_hkk4_prod_xsec_cov.root");
   TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
 //		std::cout<<" e = " << (*matT)[1][1] << std::endl;
 
@@ -250,7 +251,7 @@ const int det_30_lowBin=2321;  const int det_30_highBin=2400;  //  numu=2321-234
   c_corr_small->SaveAs("prod_xsec_corr_small.eps");
 
 
-
+exit();
 
 
 
