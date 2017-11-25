@@ -109,7 +109,7 @@
    if( b_hkkbis_4 && b_fhc )	{ strcpy( filePrefix[it], hkkbis_4_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkkbis_4_fhc.c_str() ) ;  it++ ;		}
    if( b_hkkbis_4 && b_rhc )	{ strcpy( filePrefix[it], hkkbis_4_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkbis_4_rhc.c_str() ) ;  it++ ;		}
    if( b_hkkboh_5 && b_fhc )	{ strcpy( filePrefix[it], hkkboh_5_fhc.c_str() ) ;  	strcpy( nomFile[it], N_hkkboh_5_fhc.c_str() ) ;  it++ ;		}
-   if( b_hkkbph_5 && b_rhc )	{ strcpy( filePrefix[it], hkkboh_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkboh_5_rhc.c_str() ) ;  it++ ;		}
+   if( b_hkkboh_5 && b_rhc )	{ strcpy( filePrefix[it], hkkboh_5_rhc.c_str() ) ;     	strcpy( nomFile[it], N_hkkboh_5_rhc.c_str() ) ;  it++ ;		}
   
 
         
