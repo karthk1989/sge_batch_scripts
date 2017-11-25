@@ -121,7 +121,28 @@ int plot_prodx_cov(){
   // small  
   plot_TH2D_cov_default_cloz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
 
+C
+D
+D
+B
+B
+A
+B
+C
+A
+D
+D
 
+d
+A
+A
+A
+A
+
+plot_TH2D_cov_default_cloz_smalL( *h_cov, "prod_xsec", "", "Production xs syst"  );
+
+
+  
 return;
 
 
@@ -141,6 +162,17 @@ return;
   ////////////////////////////////////////////////////////////////////////
   ////////////// Build and plot the full correlations matrix  /////////////
 
+
+  // loop over the covariance matrix diagonal elements
+  // cov_ii = var_i = (sig_i)^2
+  // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
+
+  double var[ nRows ];
+  for( int irow=0; irow<nRows; irow++){
+
+    // h_cov starts at bin1, array starts at element 0
+    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
+  }
 
   // loop over the covariance matrix diagonal elements
   // cov_ii = var_i = (sig_i)^2
@@ -677,14 +709,3 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   const char* save_det_syst_eps = str_save_det_syst_eps.c_str();
 
   c_err_nd5_fhc->SaveAs(save_det_syst_png);
-  c_err_nd5_fhc->SaveAs(save_det_syst_pdf);
-  c_err_nd5_fhc->SaveAs(save_det_syst_eps);
-
-  delete c_err_nd5_fhc;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
-
-  return 0;
-}

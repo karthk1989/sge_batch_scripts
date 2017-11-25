@@ -248,13 +248,13 @@ void plot_TH2D_cov_default_cloz_small( TH2D& h_cov, std::string saveTag="", std:
 
  
 // Not that histo bin numbered from 1 upwards
-void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histBinMin =1; int histBinMax=2  ){
+void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histMin0=0, int histMaxNminus1=1  ){
 
 
   const char* ch_title = title.c_str();
 
   if(saveLocation=="") saveLocation="$PWD";
-  std::string save = saveLocation +"/"+ saveTag +"_cov_large";
+  std::string save = saveLocation +"/"+ saveTag +"_cov_large_cutOut";
 
   std::string save_png = save +".png";  const char* ch_save_png = save_png.c_str();
   std::string save_pdf = save +".pdf";  const char* ch_save_pdf = save_pdf.c_str();
@@ -289,8 +289,8 @@ void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="
 
   h_cov->SetTitle( ch_title );
 
-  h_cov->GetXaxis()->SetRangeUser(histBinMin, histBinMax);
-  h_cov->GetYaxis()->SetRangeUser(histBinMin, histBinMax);
+  h_cov->GetXaxis()->SetRangeUser(histMin0, histMaxNminus1);
+  h_cov->GetYaxis()->SetRangeUser(histMin0, histMaxNminus1);
 
   Int_t nb = 5000;
   h_cov.SetContour(nb);
@@ -310,3 +310,73 @@ void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="
   delete c1;
   return;
 } 
+
+
+// Not that histo bin numbered from 1 upwards
+double extractArrayDaigCov_var( TH2D& h_cov, int nRrows){
+
+  const int nRowsConst = nRows;
+  double var[ nRows ];
+  for( int irow=0; irow<nRowsConst; irow++){
+
+    // h_cov starts at bin1, array starts at element 0
+    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
+  }
+
+  return var;
+}
+
+
+
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ////////////// Build and plot the full correlations matrix  /////////////
+
+
+  // loop over the covariance matrix diagonal elements
+  // cov_ii = var_i = (sig_i)^2
+  // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
+
+
+/// take a cov, extract the var from the diag, and form the correlation matrix
+
+void builCorFromCov = new TH2D( TH2D& h_cov, int nRows, TH2D& outCor ){
+
+  double var = extracArrayDaigCov_var( TH2D& h_cov, int nRrows);
+
+
+  TH2D* h_corr = new TH2D("h_corr", "h_corr", nRows, 0, nRows, nRows, 0, nRows);
+
+  // loop over elements of cov to build the corr
+  // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
+
+  for( int irow=0; irow<nRows; irow++){
+    for( int icol=0; icol<nRows; icol++){
+      
+       // h_cov starts at bin1, array starts at element 0     
+      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
+      double denom = sqrt( var[irow]*var[icol] ); 
+      double e_corr= numer / denom ;
+      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
+    }
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
