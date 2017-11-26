@@ -28,7 +28,7 @@
 
   export THROW=${1}
   echo THROW = ${THROW}
-  export FOLDER="snmult_outputs"
+  export FOLDER="snleadbar_outputs"
   export NAME="SNLEADBAR"
   export ARG="-type SNLEADBAR  -throw ${THROW}"
  # --------------------- #
