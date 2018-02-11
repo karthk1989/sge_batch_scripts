@@ -114,8 +114,12 @@ void returnMinMax_TH2D( TH2D& h, int nRow, int nCol, int &min, int &minRow, int 
 
 
 
+// Takes a TH2D
 
+//****************************************************
 void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
+//****************************************************
+//****************************************************
 
 
   const char* ch_title = title.c_str();
@@ -127,9 +131,9 @@ void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std:
   std::string save_pdf = save +".pdf";  const char* ch_save_pdf = save_pdf.c_str();
   std::string save_eps = save +".eps";  const char* ch_save_eps = save_eps.c_str();
 
-  std::string save_title_png = save +"_title.png";  const char* ch_save_title_png = save_title_png.c_str();
-  std::string save_title_pdf = save +"_title.pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
-  std::string save_title_eps = save +"_title.eps";  const char* ch_save_title_eps = save_title_eps.c_str();
+  std::string save_title_png = save +"_"+title+".png";  const char* ch_save_title_png = save_title_png.c_str();
+  std::string save_title_pdf = save +"_"+title+".pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
+  std::string save_title_eps = save +"_"+title+".eps";  const char* ch_save_title_eps = save_title_eps.c_str();
 
 
   TCanvas* c2 = new TCanvas("c1", "c1", 4200, 4200);
@@ -190,9 +194,9 @@ void plot_TH2D_cov_default_cloz_small( TH2D& h_cov, std::string saveTag="", std:
   std::string save_pdf = save +".pdf";  const char* ch_save_pdf = save_pdf.c_str();
   std::string save_eps = save +".eps";  const char* ch_save_eps = save_eps.c_str();
 
-  std::string save_title_png = save +"_title.png";  const char* ch_save_title_png = save_title_png.c_str();
-  std::string save_title_pdf = save +"_title.pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
-  std::string save_title_eps = save +"_title.eps";  const char* ch_save_title_eps = save_title_eps.c_str();
+  std::string save_title_png = save +"_"+title+".png";  const char* ch_save_title_png = save_title_png.c_str();
+  std::string save_title_pdf = save +"_"+title+".pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
+  std::string save_title_eps = save +"_"+title+".eps";  const char* ch_save_title_eps = save_title_eps.c_str();
 
 
   TCanvas* c2 = new TCanvas("c1", "c1", 1000, 1000);
