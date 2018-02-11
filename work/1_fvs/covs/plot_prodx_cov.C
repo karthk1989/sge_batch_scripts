@@ -122,7 +122,7 @@ int plot_prodx_cov(){
 
 
   
-return;
+//return;
 
 
         TCanvas* c2_small = new TCanvas("prod_xsec_cov_bins_0_320", "prod_xsec_cov_bins_0_320", 1000, 1000);
