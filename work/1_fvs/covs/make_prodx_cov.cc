@@ -43,8 +43,8 @@
   bool b_nd9_fv7_h7p7 = true;	if( b_nd9_fv7_h7p7 ) dets++; 
 
   bool b_hktoch_2 = true;	if( b_hktoch_2 ) dets++;
-  bool b_hkhak_3 =  false;	if( b_hkhak_3 ) dets++;
-  bool b_hkkbis_4 = true;	if( b_hkkbis_4 ) dets++;
+  bool b_hkhak_3 = false;	if( b_hkhak_3 ) dets++;
+  bool b_hkkbis_4 = false;	if( b_hkkbis_4 ) dets++;
   bool b_hkkboh_5 = false;	if( b_hkkboh_5 ) dets++;
 
   bool b_fhc = true;  bool b_rhc = true;  if(b_fhc && b_rhc) dets=dets*2;
@@ -104,7 +104,7 @@
  std::string  N_hkhak_3_fhc= nomDir+"3_hkhak_fhc_NOM_.root";		std::string  N_hkhak_3_rhc= nomDir+"3_hkhak_rhc_NOM_.root";		
  std::string  N_hkkbis_4_fhc= nomDir+"4_hkkbis_fhc_NOM_.root";		std::string  N_hkkbis_4_rhc= nomDir+"4_hkkbis_rhc_NOM_.root";		
  std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hkkboh_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
-    
+  
 
 
    

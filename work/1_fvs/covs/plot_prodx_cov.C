@@ -21,7 +21,7 @@
 // bin = nbins;   last bin with upper-edge xup EXCLUDED
 // bin = nbins+1; overflow bin
 
-
+#include <cov_tools.c>
 
 int plot_prodx_cov(){	
 
@@ -41,122 +41,92 @@ int plot_prodx_cov(){
 			
   std::string str_syst = "prod_xsec";
  
-//  TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
+  //TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
   TFile* TFcov = new TFile("./2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root");
+
   TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
-//		std::cout<<" e = " << (*matT)[1][1] << std::endl;
+  //  std::cout<<" e = " << (*matT)[1][1] << std::endl;
+
+
+
 
 	// --- XXX ---------------------- XXX--- ///		
 
-
-const int det_1_lowBin=1;      const int det_1_highBin=80;  //     numu=1-20, anumu=21-40, nue=41-60, anue=61-80
-const int det_2_lowBin=81;     const int det_2_highBin=160;  //    numu=81-100, anumu=101-120, nue=121-140, anue=141-160
-const int det_3_lowBin=161;    const int det_3_highBin=240;  //    numu=161-180, anumu=181-200, nue=201-220, anue=221-240
-const int det_4_lowBin=241;    const int det_4_highBin=320;  //    numu=241-260, anumu=261-280, nue=281-300, anue=301-320
-const int det_5_lowBin=321;    const int det_5_highBin=400;  //    numu=321-340, anumu=341-360, nue=361-380, anue=381-400
-const int det_6_lowBin=401;    const int det_6_highBin=480;  //    numu=401-420, anumu=421-440, nue=441-460, anue=461-480
-const int det_7_lowBin=481;    const int det_7_highBin=560;  //    numu=481-500, anumu=501-520, nue=521-540, anue=541-560
-const int det_8_lowBin=561;    const int det_8_highBin=640;  //    numu=561-580, anumu=581-600, nue=601-620, anue=621-640
-const int det_9_lowBin=641;    const int det_9_highBin=720;  //    numu=641-660, anumu=661-680, nue=681-700, anue=701-720
-const int det_10_lowBin=721;   const int det_10_highBin=800;  //   numu=721-740, anumu=741-760, nue=761-780, anue=781-800
-const int det_11_lowBin=801;   const int det_11_highBin=880;  //   numu=801-820, anumu=821-840, nue=841-860, anue=861-880
-const int det_12_lowBin=881;   const int det_12_highBin=960;  //   numu=881-900, anumu=901-920, nue=921-940, anue=941-960
-const int det_13_lowBin=961;   const int det_13_highBin=1040;  //  numu=961-980, anumu=981-1000, nue=1001-1020, anue=1021-1040
-const int det_14_lowBin=1041;  const int det_14_highBin=1120;  //  numu=1041-1060, anumu=1061-1080, nue=1081-1100, anue=1101-1120
-const int det_15_lowBin=1121;  const int det_15_highBin=1200;  //  numu=1121-1140, anumu=1141-1160, nue=1161-1180, anue=1181-1200
-const int det_16_lowBin=1201;  const int det_16_highBin=1280;  //  numu=1201-1220, anumu=1221-1240, nue=1241-1260, anue=1261-1280
-const int det_17_lowBin=1281;  const int det_17_highBin=1360;  //  numu=1281-1300, anumu=1301-1320, nue=1321-1340, anue=1341-1360
-const int det_18_lowBin=1361;  const int det_18_highBin=1440;  //  numu=1361-1380, anumu=1381-1400, nue=1401-1420, anue=1421-1440
-const int det_19_lowBin=1441;  const int det_19_highBin=1520;  //  numu=1441-1460, anumu=1461-1480, nue=1481-1500, anue=1501-1520
-const int det_20_lowBin=1521;  const int det_20_highBin=1600;  //  numu=1521-1540, anumu=1541-1560, nue=1561-1580, anue=1581-1600
-const int det_21_lowBin=1601;  const int det_21_highBin=1680;  //  numu=1601-1620, anumu=1621-1640, nue=1641-1660, anue=1661-1680
-const int det_22_lowBin=1681;  const int det_22_highBin=1760;  //  numu=1681-1700, anumu=1701-1720, nue=1721-1740, anue=1741-1760
-const int det_23_lowBin=1761;  const int det_23_highBin=1840;  //  numu=1761-1780, anumu=1781-1800, nue=1801-1820, anue=1821-1840
-const int det_24_lowBin=1841;  const int det_24_highBin=1920;  //  numu=1841-1860, anumu=1861-1880, nue=1881-1900, anue=1901-1920
-const int det_25_lowBin=1921;  const int det_25_highBin=2000;  //  numu=1921-1940, anumu=1941-1960, nue=1961-1980, anue=1981-2000
-const int det_26_lowBin=2001;  const int det_26_highBin=2080;  //  numu=2001-2020, anumu=2021-2040, nue=2041-2060, anue=2061-2080
-const int det_27_lowBin=2081;  const int det_27_highBin=2160;  //  numu=2081-2100, anumu=2101-2120, nue=2121-2140, anue=2141-2160
-const int det_28_lowBin=2161;  const int det_28_highBin=2240;  //  numu=2161-2180, anumu=2181-2200, nue=2201-2220, anue=2221-2240
-const int det_29_lowBin=2241;  const int det_29_highBin=2320;  //  numu=2241-2260, anumu=2261-2280, nue=2281-2300, anue=2301-2320
-const int det_30_lowBin=2321;  const int det_30_highBin=2400;  //  numu=2321-2340, anumu=2341-2360, nue=2361-2380, anue=2381-2400
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////
-///////////////// Retrieving and plotting the full cov /////////////////
-
-    
-  TMatrixDSym* cov = new TMatrixDSym(nRows);
-
-  //TH2D (const char *name, const char *title, Int_t nRowsx, Double_t xlow, Double_t xup, Int_t nRowsy, Double_t ylow, Double_t yup)
-  TH2D* h_cov = new TH2D("h_cov", "h_cov", nRows, 0, nRows, nRows, 0, nRows);
-
-    double min=999.0 ;
-    double max=-999.0 ;
-    
-    for( int irow = 0 ; irow< nRows ; irow++ ){
-      for( int jcolumn = 0;  jcolumn< nRows; jcolumn++ ){
-
-        double e =(*matT)[irow + binOffset][jcolumn + binOffset];
-
-        (*cov)[irow][jcolumn] = e; 
-	
-	//  +1 because first histo bin is bin1  (bin0 is overlfow)
-	h_cov->SetBinContent( irow+1, jcolumn+1, e );
-
-        // std::cout<<" irow+1 = " << irow+1 << ", jcolumn+1 = " << jcolumn+1 <<",    element = " << e << std::endl;
-	//if(e > 0.0085) std::cout<<" e > 0.0085:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
-	//if(e < -0.002) std::cout<<" e < -0.002:  e = " << e << ":  irow = " << irow << ", jcolumn = " << jcolumn << std::endl;
-
-        if( e < min ) min =e;
-        if( e > max ) max =e;
-      }
-    }
-  std::cout<<" min = " << min <<std::endl;
-  std::cout<<" max = " << max <<std::endl;
-  std::cout<<" nRows = " << nRows << std::endl;
-
-	/*const UInt_t Number = 5;
-	Double_t Red[Number]    = { 1.00, 0.00, 0.00, 0.00, 0.00 };
-	Double_t Green[Number]  = { 1.00, 0.80, 0.70, 0.20, 0.100 };
-	Double_t Blue[Number]   = { 1.00, 0.80, 0.70, 0.20, 0.100 };
-	Double_t Length[Number] = { 0.1, 0.3, 0.5, 0.70,  0.9 };
-	Int_t nb = 50;
-	TColor::CreateGradientColorTable(Number,Length,Red,Green,Blue,nb);
-	  */
-
-	TCanvas* c1 = new TCanvas("prod_xsec_cov_large", "prod_xsec_cov_large", 4200, 4200);
-	gPad->SetRightMargin(0.16);
-	gStyle->SetOptStat(0);	// remove title
-	gStyle->SetOptTitle(0);	// remove stat box
-	//gStyle->SetLegendBorderSize(0); 	// remove border on legend
-
-	//double m = TMath::Max(h_cov->GetMaximum(),-h_cov->GetMinimum());
-	//h_cov->GetZaxis()->SetRangeUser( min, max);
-	//h_cov->GetZaxis()->SetRangeUser( -max, max);
-	//h_cov->GetZaxis()->SetRangeUser( min, -min);
-	//h_cov->GetZaxis()->SetRangeUser( 0.02, -0.02);
-	//h_cov->GetZaxis()->SetRangeUser( -4, 4);
-
-	Int_t nb = 5000;
-	h_cov->SetContour(nb);
-	h_cov->Draw("colz");
-	c1->SaveAs("prod_xsec_cov_large.png");
-	c1->SaveAs("prod_xsec_cov_large.pdf");
-	c1->SaveAs("prod_xsec_cov_large.eps");
+  
+  const int det_1_lowBin=1;      const int det_1_highBin=80;  //     numu=1-20, anumu=21-40, nue=41-60, anue=61-80
+  const int det_2_lowBin=81;     const int det_2_highBin=160;  //    numu=81-100, anumu=101-120, nue=121-140, anue=141-160
+  const int det_3_lowBin=161;    const int det_3_highBin=240;  //    numu=161-180, anumu=181-200, nue=201-220, anue=221-240
+  const int det_4_lowBin=241;    const int det_4_highBin=320;  //    numu=241-260, anumu=261-280, nue=281-300, anue=301-320
+  const int det_5_lowBin=321;    const int det_5_highBin=400;  //    numu=321-340, anumu=341-360, nue=361-380, anue=381-400
+  const int det_6_lowBin=401;    const int det_6_highBin=480;  //    numu=401-420, anumu=421-440, nue=441-460, anue=461-480
+  const int det_7_lowBin=481;    const int det_7_highBin=560;  //    numu=481-500, anumu=501-520, nue=521-540, anue=541-560
+  const int det_8_lowBin=561;    const int det_8_highBin=640;  //    numu=561-580, anumu=581-600, nue=601-620, anue=621-640
+  const int det_9_lowBin=641;    const int det_9_highBin=720;  //    numu=641-660, anumu=661-680, nue=681-700, anue=701-720
+  const int det_10_lowBin=721;   const int det_10_highBin=800;  //   numu=721-740, anumu=741-760, nue=761-780, anue=781-800
+  const int det_11_lowBin=801;   const int det_11_highBin=880;  //   numu=801-820, anumu=821-840, nue=841-860, anue=861-880
+  const int det_12_lowBin=881;   const int det_12_highBin=960;  //   numu=881-900, anumu=901-920, nue=921-940, anue=941-960
+  const int det_13_lowBin=961;   const int det_13_highBin=1040;  //  numu=961-980, anumu=981-1000, nue=1001-1020, anue=1021-1040
+  const int det_14_lowBin=1041;  const int det_14_highBin=1120;  //  numu=1041-1060, anumu=1061-1080, nue=1081-1100, anue=1101-1120
+  const int det_15_lowBin=1121;  const int det_15_highBin=1200;  //  numu=1121-1140, anumu=1141-1160, nue=1161-1180, anue=1181-1200
+  const int det_16_lowBin=1201;  const int det_16_highBin=1280;  //  numu=1201-1220, anumu=1221-1240, nue=1241-1260, anue=1261-1280
+  const int det_17_lowBin=1281;  const int det_17_highBin=1360;  //  numu=1281-1300, anumu=1301-1320, nue=1321-1340, anue=1341-1360
+  const int det_18_lowBin=1361;  const int det_18_highBin=1440;  //  numu=1361-1380, anumu=1381-1400, nue=1401-1420, anue=1421-1440
+  const int det_19_lowBin=1441;  const int det_19_highBin=1520;  //  numu=1441-1460, anumu=1461-1480, nue=1481-1500, anue=1501-1520
+  const int det_20_lowBin=1521;  const int det_20_highBin=1600;  //  numu=1521-1540, anumu=1541-1560, nue=1561-1580, anue=1581-1600
+  const int det_21_lowBin=1601;  const int det_21_highBin=1680;  //  numu=1601-1620, anumu=1621-1640, nue=1641-1660, anue=1661-1680
+  const int det_22_lowBin=1681;  const int det_22_highBin=1760;  //  numu=1681-1700, anumu=1701-1720, nue=1721-1740, anue=1741-1760
+  const int det_23_lowBin=1761;  const int det_23_highBin=1840;  //  numu=1761-1780, anumu=1781-1800, nue=1801-1820, anue=1821-1840
+  const int det_24_lowBin=1841;  const int det_24_highBin=1920;  //  numu=1841-1860, anumu=1861-1880, nue=1881-1900, anue=1901-1920
+  const int det_25_lowBin=1921;  const int det_25_highBin=2000;  //  numu=1921-1940, anumu=1941-1960, nue=1961-1980, anue=1981-2000
+  const int det_26_lowBin=2001;  const int det_26_highBin=2080;  //  numu=2001-2020, anumu=2021-2040, nue=2041-2060, anue=2061-2080
+  const int det_27_lowBin=2081;  const int det_27_highBin=2160;  //  numu=2081-2100, anumu=2101-2120, nue=2121-2140, anue=2141-2160
+  const int det_28_lowBin=2161;  const int det_28_highBin=2240;  //  numu=2161-2180, anumu=2181-2200, nue=2201-2220, anue=2221-2240
+  const int det_29_lowBin=2241;  const int det_29_highBin=2320;  //  numu=2241-2260, anumu=2261-2280, nue=2281-2300, anue=2301-2320
+  const int det_30_lowBin=2321;  const int det_30_highBin=2400;  //  numu=2321-2340, anumu=2341-2360, nue=2361-2380, anue=2381-2400
+  
+  
 
 
-        TCanvas* c1_small = new TCanvas("prod_xsec_cov_small", "prod_xsec_cov_small", 1000, 1000);
-        gPad->SetRightMargin(0.16);
-        gStyle->SetOptStat(0);  // remove title
-        gStyle->SetOptTitle(0); // remove stat box
-        //gStyle->SetLegendBorderSize(0);       // remove border on legend
-	h_cov->Draw("colz");
-      	c1_small->SaveAs("prod_xsec_cov_small.png");
-	c1_small->SaveAs("prod_xsec_cov_small.pdf");
-	c1_small->SaveAs("prod_xsec_cov_small.eps");
+
+
+  ////////////////////////////////////////////////////////////////////////
+  ///////////////// Retrieving and plotting the full cov /////////////////
+
+
+  ////// Turn TMatrixTSym cov matrix into TH2D cov matrix //////
+
+
+  //  TH2D* h = new TMatrixTSym_to_TH2D(matT, nRows, 0 );
+  TH2D* h_cov = new TH2D("h", "h", nRows, 0, nRows, nRows, 0, nRows);
+
+
+  // Takes a matrix of type TMatrixDSym and transform it into a TH2D histogram
+  // - elemet 0 of TMatrixDSym corresponds to Bin(1,1) of the TH2D
+  TMatrixTSym_to_TH2D(*matT, nRows, 0, *h_cov );
+
+  std::cout<<""<<std::endl;
+  std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
+  double matT_00 = matT[0][0]; 
+  std::cout<<" matT[0][0] = " << matT_00 << std::endl;
+  std::cout<<" h_cov->GetBinContent(0+1, 0+1) = "<< h_cov->GetBinContent(0+1, 0+1)  << std::endl;
+
+
+  // Read out the min and max bins of a TH2D histo
+  //readOutMinMax_TH2D( *h_cov, nRows, nRows );
+
+  // large  
+  plot_TH2D_cov_default_cloz_large( *h_cov, "prod_xsec", "", "Production xs syst"  );
+
+  // small  
+  plot_TH2D_cov_default_cloz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
+
+
+
+plot_TH2D_cov_default_cloz_smalL( *h_cov, "prod_xsec", "", "Production xs syst"  );
+
+
+  
+return;
 
 
         TCanvas* c2_small = new TCanvas("prod_xsec_cov_bins_0_320", "prod_xsec_cov_bins_0_320", 1000, 1000);
@@ -172,9 +142,20 @@ const int det_30_lowBin=2321;  const int det_30_highBin=2400;  //  numu=2321-234
 	
 
 
- ////////////////////////////////////////////////////////////////////////
-////////////// Build and plot the full correlations matrix  /////////////
+  ////////////////////////////////////////////////////////////////////////
+  ////////////// Build and plot the full correlations matrix  /////////////
 
+
+  // loop over the covariance matrix diagonal elements
+  // cov_ii = var_i = (sig_i)^2
+  // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
+
+  double var[ nRows ];
+  for( int irow=0; irow<nRows; irow++){
+
+    // h_cov starts at bin1, array starts at element 0
+    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
+  }
 
   // loop over the covariance matrix diagonal elements
   // cov_ii = var_i = (sig_i)^2
@@ -722,3 +703,4 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
   return 0;
 }
+

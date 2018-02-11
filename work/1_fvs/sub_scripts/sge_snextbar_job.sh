@@ -28,7 +28,7 @@
 
   export THROW=${1}
   echo THROW = ${THROW}
-  export FOLDER="snmult_outputs"
+  export FOLDER="snextbar_outputs"
   export NAME="SNEXTBAR"
   export ARG="-type SNEXTBAR -throw ${THROW}"
  # --------------------- #
