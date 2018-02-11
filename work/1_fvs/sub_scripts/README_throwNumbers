@@ -57,9 +57,9 @@ oaay
 
 pbeamx
 - condor:  queue 50
-- sge: 0 to 50  (no loop argument) 
+- sge: 0 to 49  (no loop argument) 
 
 pbeamy:
 - condor:  queue 50
-- sge: 0 to 50  (no loop argument) 
+- sge: 0 to 49  (no loop argument) 
 
