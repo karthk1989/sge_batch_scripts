@@ -217,28 +217,28 @@
  std::string  hkkboh_5_fhc= systDir+"5_hkkboh_fhc_" + NAME;		std::string  hkkboh_5_rhc= systDir+"5_hkkboh_rhc_" + NAME;	
 
  
- std::string  N_sk_1_fhc= nomDir+"1_sk_fhc"+nom;			std::string  N_sk_1_rhc= nomDir+"1_sk_rhc"+nom;				
- std::string  N_nd5_fhc_fv= nomDir+"nd5_fhc_fv"+nom;		std::string  N_nd5_rhc_fv= nomDir+"nd5_rhc_fv"+nom;			
- std::string  N_nd2_fhc_fv= nomDir+"nd2_fhc_fv"+nom;		std::string  N_nd2_rhc_fv= nomDir+"nd2_rhc_fv"+nom; 		
- std::string  N_nd9_fhc_fv1_h10= nomDir+"nd9_fhc_fv1_h10"+nom;	std::string  N_nd9_rhc_fv1_h10= nomDir+"nd9_rhc_fv1_h10"+nom;	
- std::string  N_nd9_fhc_fv2_h10= nomDir+"nd9_fhc_fv2_h10"+nom;	std::string  N_nd9_rhc_fv2_h10= nomDir+"nd9_rhc_fv2_h10"+nom;	
- std::string  N_nd9_fhc_fv3_h10= nomDir+"nd9_fhc_fv3_h10"+nom;	std::string  N_nd9_rhc_fv3_h10= nomDir+"nd9_rhc_fv3_h10"+nom;	
- std::string  N_nd9_fhc_fv4_h10= nomDir+"nd9_fhc_fv4_h10"+nom;	std::string  N_nd9_rhc_fv4_h10= nomDir+"nd9_rhc_fv4_h10"+nom;	
- std::string  N_nd9_fhc_fv5_h10= nomDir+"nd9_fhc_fv5_h10"+nom;	std::string  N_nd9_rhc_fv5_h10= nomDir+"nd9_rhc_fv5_h10"+nom;	
- std::string  N_nd9_fhc_fv6_h10= nomDir+"nd9_fhc_fv6_h10"+nom;	std::string  N_nd9_rhc_fv6_h10= nomDir+"nd9_rhc_fv6_h10"+nom;	
- std::string  N_nd9_fhc_fv7_h10= nomDir+"nd9_fhc_fv7_h10"+nom;	std::string  N_nd9_rhc_fv7_h10= nomDir+"nd9_rhc_fv7_h10"+nom;	
- std::string  N_nd9_fhc_fv1_h7p7= nomDir+"nd9_fhc_fv1_h7p7"+nom;	std::string  N_nd9_rhc_fv1_h7p7= nomDir+"nd9_rhc_fv1_h7p7"+nom;	
- std::string  N_nd9_fhc_fv2_h7p7= nomDir+"nd9_fhc_fv2_h7p7"+nom;	std::string  N_nd9_rhc_fv2_h7p7= nomDir+"nd9_rhc_fv2_h7p7"+nom;	
- std::string  N_nd9_fhc_fv3_h7p7= nomDir+"nd9_fhc_fv3_h7p7"+nom;	std::string  N_nd9_rhc_fv3_h7p7= nomDir+"nd9_rhc_fv3_h7p7"+nom;	
- std::string  N_nd9_fhc_fv4_h7p7= nomDir+"nd9_fhc_fv4_h7p7"+nom;	std::string  N_nd9_rhc_fv4_h7p7= nomDir+"nd9_rhc_fv4_h7p7"+nom;	
- std::string  N_nd9_fhc_fv5_h7p7= nomDir+"nd9_fhc_fv5_h7p7"+nom;	std::string  N_nd9_rhc_fv5_h7p7= nomDir+"nd9_rhc_fv5_h7p7"+nom;	
- std::string  N_nd9_fhc_fv6_h7p7= nomDir+"nd9_fhc_fv6_h7p7"+nom;	std::string  N_nd9_rhc_fv6_h7p7= nomDir+"nd9_rhc_fv6_h7p7"+nom;	
- std::string  N_nd9_fhc_fv7_h7p7= nomDir+"nd9_fhc_fv7_h7p7"+nom;	std::string  N_nd9_rhc_fv7_h7p7= nomDir+"nd9_rhc_fv7_h7p7"+nom;	
- std::string  N_hktoch_2_fhc= nomDir+"2_hktoch_fhc"+nom;		std::string  N_hktoch_2_rhc= nomDir+"2_hktoch_rhc"+nom;		
- std::string  N_hkhak_3_fhc= nomDir+"3_hkhak_fhc"+nom;		std::string  N_hkhak_3_rhc= nomDir+"3_hkhak_rhc"+nom;		
- std::string  N_hkkbis_4_fhc= nomDir+"4_hkkbis_fhc"+nom;		std::string  N_hkkbis_4_rhc= nomDir+"4_hkkbis_rhc"+nom;		
- std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc"+nom;		std::string  N_hkkboh_5_rhc= nomDir+"5_hkkboh_rhc"+nom;		
-
+ std::string  N_sk_1_fhc= nomDir+"1_sk_fhc_NOM_.root";			std::string  N_sk_1_rhc= nomDir+"1_sk_rhc_NOM_.root";				
+ std::string  N_nd5_fhc_fv= nomDir+"nd5_fhc_fv_NOM_.root";		std::string  N_nd5_rhc_fv= nomDir+"nd5_rhc_fv_NOM_.root";			
+ std::string  N_nd2_fhc_fv= nomDir+"nd2_fhc_fv_NOM_.root";		std::string  N_nd2_rhc_fv= nomDir+"nd2_rhc_fv_NOM_.root"; 		
+ std::string  N_nd9_fhc_fv1_h10= nomDir+"nd9_fhc_fv1_h10_NOM_.root";	std::string  N_nd9_rhc_fv1_h10= nomDir+"nd9_rhc_fv1_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv2_h10= nomDir+"nd9_fhc_fv2_h10_NOM_.root";	std::string  N_nd9_rhc_fv2_h10= nomDir+"nd9_rhc_fv2_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv3_h10= nomDir+"nd9_fhc_fv3_h10_NOM_.root";	std::string  N_nd9_rhc_fv3_h10= nomDir+"nd9_rhc_fv3_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv4_h10= nomDir+"nd9_fhc_fv4_h10_NOM_.root";	std::string  N_nd9_rhc_fv4_h10= nomDir+"nd9_rhc_fv4_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv5_h10= nomDir+"nd9_fhc_fv5_h10_NOM_.root";	std::string  N_nd9_rhc_fv5_h10= nomDir+"nd9_rhc_fv5_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv6_h10= nomDir+"nd9_fhc_fv6_h10_NOM_.root";	std::string  N_nd9_rhc_fv6_h10= nomDir+"nd9_rhc_fv6_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv7_h10= nomDir+"nd9_fhc_fv7_h10_NOM_.root";	std::string  N_nd9_rhc_fv7_h10= nomDir+"nd9_rhc_fv7_h10_NOM_.root";	
+ std::string  N_nd9_fhc_fv1_h7p7= nomDir+"nd9_fhc_fv1_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv1_h7p7= nomDir+"nd9_rhc_fv1_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv2_h7p7= nomDir+"nd9_fhc_fv2_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv2_h7p7= nomDir+"nd9_rhc_fv2_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv3_h7p7= nomDir+"nd9_fhc_fv3_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv3_h7p7= nomDir+"nd9_rhc_fv3_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv4_h7p7= nomDir+"nd9_fhc_fv4_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv4_h7p7= nomDir+"nd9_rhc_fv4_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv5_h7p7= nomDir+"nd9_fhc_fv5_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv5_h7p7= nomDir+"nd9_rhc_fv5_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv6_h7p7= nomDir+"nd9_fhc_fv6_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv6_h7p7= nomDir+"nd9_rhc_fv6_h7p7_NOM_.root";	
+ std::string  N_nd9_fhc_fv7_h7p7= nomDir+"nd9_fhc_fv7_h7p7_NOM_.root";	std::string  N_nd9_rhc_fv7_h7p7= nomDir+"nd9_rhc_fv7_h7p7_NOM_.root";	
+ std::string  N_hktoch_2_fhc= nomDir+"2_hktoch_fhc_NOM_.root";		std::string  N_hktoch_2_rhc= nomDir+"2_hktoch_rhc_NOM_.root";		
+ std::string  N_hkhak_3_fhc= nomDir+"3_hkhak_fhc_NOM_.root";		std::string  N_hkhak_3_rhc= nomDir+"3_hkhak_rhc_NOM_.root";		
+ std::string  N_hkkbis_4_fhc= nomDir+"4_hkkbis_fhc_NOM_.root";		std::string  N_hkkbis_4_rhc= nomDir+"4_hkkbis_rhc_NOM_.root";		
+ std::string  N_hkkboh_5_fhc= nomDir+"5_hkkboh_fhc_NOM_.root";		std::string  N_hkkboh_5_rhc= nomDir+"5_hkkboh_rhc_NOM_.root";		
+  
 
    
    char filePrefix[ ndet ][200];   
