@@ -114,8 +114,8 @@ int plot_prodx_cov(){
   // Read out the min and max bins of a TH2D histo
   readOutMinMax_TH2D( *h_cov, nRows, nRows );
 
-  // Plot the covariance matrix (does a small and large version)  
-  plot_TH2D_cov_default_cloz( *h_cov, "prod_xsec", "", "Production xs syst"  );
+  // large  
+  plot_TH2D_cov_default_cloz_large( *h_cov, "prod_xsec", "", "Production xs syst"  );
   // small  
   plot_TH2D_cov_default_cloz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
 
