@@ -135,7 +135,7 @@
     const int nthrows = 1;
   }
   else if(snleadbar){
-    std::string str_cov_name =  "snleadbar";  const char* cov_name = str_cov_name.c_str();
+    std::string str_cov_name =  "snleadbar_cov";  const char* cov_name = str_cov_name.c_str();
     std::string str_save1 = save_prefix + str_cov_name + ".root";  
     const char* save1 = str_save1.c_str();
 
@@ -146,7 +146,7 @@
     const int nthrows = 2;
   }
   else if(snmult){
-    std::string str_cov_name =  "snmult";  const char* cov_name = str_cov_name.c_str();
+    std::string str_cov_name =  "snmult_cov";  const char* cov_name = str_cov_name.c_str();
     std::string str_save1 = save_prefix + str_cov_name + ".root";  
     const char* save1 = str_save1.c_str();
 

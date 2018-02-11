@@ -117,7 +117,7 @@ void returnMinMax_TH2D( TH2D& h, int nRow, int nCol, int &min, int &minRow, int 
 // Takes a TH2D
 
 //****************************************************
-void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
+void plot_TH2D_cov_default_cloz( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
 //****************************************************
 //****************************************************
 
@@ -125,18 +125,20 @@ void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std:
   const char* ch_title = title.c_str();
 
   if(saveLocation=="") saveLocation="$PWD";
-  std::string save = saveLocation +"/"+ saveTag +"_cov_large";
 
-  std::string save_png = save +".png";  const char* ch_save_png = save_png.c_str();
-  std::string save_pdf = save +".pdf";  const char* ch_save_pdf = save_pdf.c_str();
-  std::string save_eps = save +".eps";  const char* ch_save_eps = save_eps.c_str();
+  // large size save name
+  std::string save_l = saveLocation +"/"+ saveTag +"_"+title+"_cov_large";
+  std::string save_png_l = save_l +".png";  const char* ch_save_png_l = save_png_l.c_str();
+  std::string save_pdf_l = save_l +".pdf";  const char* ch_save_pdf_l = save_pdf_l.c_str();
+  std::string save_eps_l = save_l +".eps";  const char* ch_save_eps_l = save_eps_l.c_str();
 
-  std::string save_title_png = save +"_"+title+".png";  const char* ch_save_title_png = save_title_png.c_str();
-  std::string save_title_pdf = save +"_"+title+".pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
-  std::string save_title_eps = save +"_"+title+".eps";  const char* ch_save_title_eps = save_title_eps.c_str();
+  // small size save name
+  std::string save_s = saveLocation +"/"+ saveTag +"_"+title+"_cov_small";
+  std::string save_png_s = save_s +".png";  const char* ch_save_png_s = save_png_s.c_str();
+  std::string save_pdf_s = save_s +".pdf";  const char* ch_save_pdf_s = save_pdf_s.c_str();
+  std::string save_eps_s = save_s +".eps";  const char* ch_save_eps_s = save_eps_s.c_str();
 
 
-  TCanvas* c2 = new TCanvas("c1", "c1", 4200, 4200);
 
   gPad->SetRightMargin(0.16);
   gStyle->SetOptStat(0);                 // remove stat box
@@ -157,6 +159,10 @@ void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std:
   //h_cov->GetZaxis()->SetRangeUser( min, -min);
   //h_cov->GetZaxis()->SetRangeUser( 0.02, -0.02);
   //h_cov->GetZaxis()->SetRangeUser( -4, 4);
+
+
+  TCanvas* c2 = new TCanvas("c1", "c1", 4200, 4200);
+
 
   h_cov->SetTitle( ch_title );
 
@@ -252,7 +258,7 @@ void plot_TH2D_cov_default_cloz_small( TH2D& h_cov, std::string saveTag="", std:
 
  
 // Not that histo bin numbered from 1 upwards
-void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histMin0=0, int histMaxNminus1=1  ){
+void plot_TH2D_cov_default_cloz_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histMin0=0, int histMaxNminus1=1  ){
 
 
   const char* ch_title = title.c_str();
@@ -264,9 +270,9 @@ void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="
   std::string save_pdf = save +".pdf";  const char* ch_save_pdf = save_pdf.c_str();
   std::string save_eps = save +".eps";  const char* ch_save_eps = save_eps.c_str();
 
-  std::string save_title_png = save +"_title.png";  const char* ch_save_title_png = save_title_png.c_str();
-  std::string save_title_pdf = save +"_title.pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
-  std::string save_title_eps = save +"_title.eps";  const char* ch_save_title_eps = save_title_eps.c_str();
+  std::string save_title_png = save +"_"+title+".png";  const char* ch_save_title_png = save_title_png.c_str();
+  std::string save_title_pdf = save +"_"+title+".pdf";  const char* ch_save_title_pdf = save_title_pdf.c_str();
+  std::string save_title_eps = save +"_"+title+".eps";  const char* ch_save_title_eps = save_title_eps.c_str();
 
 
   TCanvas* c2 = new TCanvas("c1", "c1", 4200, 4200);
