@@ -114,8 +114,11 @@ void returnMinMax_TH2D( TH2D& h, int nRow, int nCol, int &min, int &minRow, int 
 
 
 
-
+// Takes a TH2D
+//****************************************************
 void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
+//****************************************************
+//****************************************************
 
 
   const char* ch_title = title.c_str();

@@ -107,26 +107,22 @@ int plot_prodx_cov(){
   std::cout<<""<<std::endl;
   std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
   double matT_00 = matT[0][0]; 
-  std::cout<<" matT[0][0] = " << matT_00 << std::endl;
-  std::cout<<" h_cov->GetBinContent(0+1, 0+1) = "<< h_cov->GetBinContent(0+1, 0+1)  << std::endl;
+  std::cout<<" TMatrixTSym:                      matT[0][0] = " << matT_00 << std::endl;
+  std::cout<<" TH2D:         h_cov->GetBinContent(0+1, 0+1) = "<< h_cov->GetBinContent(0+1, 0+1)  << std::endl;
 
 
   // Read out the min and max bins of a TH2D histo
-  //readOutMinMax_TH2D( *h_cov, nRows, nRows );
+  readOutMinMax_TH2D( *h_cov, nRows, nRows );
 
   // large  
   plot_TH2D_cov_default_cloz_large( *h_cov, "prod_xsec", "", "Production xs syst"  );
-
   // small  
   plot_TH2D_cov_default_cloz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
 
 
 
-plot_TH2D_cov_default_cloz_smalL( *h_cov, "prod_xsec", "", "Production xs syst"  );
-
-
   
-return;
+//return;
 
 
         TCanvas* c2_small = new TCanvas("prod_xsec_cov_bins_0_320", "prod_xsec_cov_bins_0_320", 1000, 1000);
