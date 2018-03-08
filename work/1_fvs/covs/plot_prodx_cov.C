@@ -28,7 +28,9 @@ int plot_prodx_cov(){
   // --- XXX --- THINGS TO EDIT --- XXX --- ///
 	
   const int nbins = 20;
-  const int ndets = (1+1+1+7 + 4)*2 ;
+
+//  const int ndets = (1+1+1+7 + 4)*2 ;
+  const int ndets = 6*2;
   const int nflavours = 4;
   const int nBinsPerDet = nbins*nflavours;
 
@@ -36,22 +38,24 @@ int plot_prodx_cov(){
   bool setMax = false;   const int binMax = 0;
   const int binOffset = 0;
   
-  const int nRows =  nflavours* nbins * ndets ;
-  std::cout<<" nRows = " << nRows << std::endl;
+  const int nRow =  nflavours* nbins * ndets ;
+  std::cout<<" nRow = " << nRow << std::endl;
 			
   std::string str_syst = "prod_xsec";
  
   //TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
-  TFile* TFcov = new TFile("./2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root");
+  //TFile* TFcov = new TFile("./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_prodx_cov.root");
+  //TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prodx_cov");
 
-  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
-  //  std::cout<<" e = " << (*matT)[1][1] << std::endl;
+  TFile* TFcov = new TFile("./offAxis_Benjamin__sk_nd5_hkToch_hkHak_hkkBis_hhkBoh_oaax_cov.root");
+  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("oaax_cov");
 
+
+//  std::cout<<" e = " << (*matT)[4][4] << std::endl;
 
 
 
 	// --- XXX ---------------------- XXX--- ///		
-
   
   const int det_1_lowBin=1;      const int det_1_highBin=80;  //     numu=1-20, anumu=21-40, nue=41-60, anue=61-80
   const int det_2_lowBin=81;     const int det_2_highBin=160;  //    numu=81-100, anumu=101-120, nue=121-140, anue=141-160
@@ -96,92 +100,98 @@ int plot_prodx_cov(){
   ////// Turn TMatrixTSym cov matrix into TH2D cov matrix //////
 
 
-  //  TH2D* h = new TMatrixTSym_to_TH2D(matT, nRows, 0 );
-  TH2D* h_cov = new TH2D("h", "h", nRows, 0, nRows, nRows, 0, nRows);
+  //  TH2D* h = new TMatrixTSym_to_TH2D(matT, nRow, 0 );
+  TH2D* h_cov = new TH2D("h", "h", nRow, 0, nRow, nRow, 0, nRow);
 
 
   // Takes a matrix of type TMatrixDSym and transform it into a TH2D histogram
   // - elemet 0 of TMatrixDSym corresponds to Bin(1,1) of the TH2D
-  TMatrixTSym_to_TH2D(*matT, nRows, 0, *h_cov );
+  TMatrixTSym_to_TH2D(*matT, nRow, 0, *h_cov );
 
-  std::cout<<""<<std::endl;
-  std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
-  double matT_00 = matT[0][0]; 
-  std::cout<<" TMatrixTSym:                      matT[0][0] = " << matT_00 << std::endl;
-  std::cout<<" TH2D:         h_cov->GetBinContent(0+1, 0+1) = "<< h_cov->GetBinContent(0+1, 0+1)  << std::endl;
+  std::cout<<" nRow = " << nRow << std::endl;
+  for( int i=0; i< nRow; i++){
+    std::cout<<"££££" << std::endl;
+    std::cout<<" h_cov->GetBinContent(i+1, i+1) = " << h_cov->GetBinContent(i+1, i+1) << std::endl; 
+  }
+
+//  std::cout<<""<<std::endl;
+//  std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
+//  double matT_00 = matT[0][0]; 
+//  std::cout<<" TMatrixTSym:                      matT[0][0] = " << matT_00 << std::endl;
+//  std::cout<<" TH2D:         h_cov->GetBinContent(0+1, 0+1) = "<< h_cov->GetBinContent(0+1, 0+1)  << std::endl;
+//
+//
+//  // Can readout min/max numbers of the covariance Th2D hist
+//  std::cout<<""<<std::endl;
+//  std::cout<<" Finding min/max element of covariance matrix to readout " << std::endl;
+//  readOutMinMax_TH2D( *h_cov, nRow, nRow );
+//
+//
+//  // Can save and readout min/max numbers of the covariance Th2D hist
+//  std::cout<<""<<std::endl;
+//  std::cout<<" Finding min/max element of covariance matrix to save" << std::endl;
+//  double min = 9999.0;  int minRow = -9999; int minCol = -9999;
+//  double max = -9999.0; int maxRow = -9999; int maxCol = -9999;
+//  returnMinMax_TH2D( *h_cov , nRow, nRow, min, minRow, minCol, max, maxRow, maxCol, true );
+//  
+//
+//  // Plot cov - large canvas  
+//  plot_TH2D_cov_default_colz_large( *h_cov, "prod_xsec", "", "Production xs syst"  );
+//  // Plot cov - small canvas
+//  plot_TH2D_cov_default_colz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
 
 
-  // Read out the min and max bins of a TH2D histo
-  readOutMinMax_TH2D( *h_cov, nRows, nRows );
+  double array[nRow] = extractArrayDaigCov_var( *h_cov, nRow);
+  std::cout<<" array[4] = " << array[4] << std::endl;
 
-  // large  
-  plot_TH2D_cov_default_cloz_large( *h_cov, "prod_xsec", "", "Production xs syst"  );
-  // small  
-  plot_TH2D_cov_default_cloz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
+  double sqrt_array_4 =  sqrt( array[4] ) ;
+  std::cout<<"  sqrt( array[4] ) " << sqrt_array_4 << std::endl; 
 
 
 
-  
-//return;
+  return;
 
-
-        TCanvas* c2_small = new TCanvas("prod_xsec_cov_bins_0_320", "prod_xsec_cov_bins_0_320", 1000, 1000);
-	gPad->SetRightMargin(0.16);
-	gStyle->SetOptStat(0);	// remove title
-	gStyle->SetOptTitle(0);	// remove stat box
-	h_cov->GetXaxis()->SetRangeUser(0, 320);
-	h_cov->GetYaxis()->SetRangeUser(0, 320);
-	h_cov->Draw("colz");
-        c2_small->SaveAs("prod_xsec_cov_0_320_small.png");
-        c2_small->SaveAs("prod_xsec_cov_0_320_small.pdf");
-        c2_small->SaveAs("prod_xsec_cov_0_320_small.eps");
-	
 
 
   ////////////////////////////////////////////////////////////////////////
   ////////////// Build and plot the full correlations matrix  /////////////
 
+  // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
+
 
   // loop over the covariance matrix diagonal elements
   // cov_ii = var_i = (sig_i)^2
   // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
-
-  double var[ nRows ];
-  for( int irow=0; irow<nRows; irow++){
+  double var[ nRow ];
+  for( int irow=0; irow<nRow; irow++){
 
     // h_cov starts at bin1, array starts at element 0
     var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
   }
 
-  // loop over the covariance matrix diagonal elements
-  // cov_ii = var_i = (sig_i)^2
-  // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
-
-  double var[ nRows ];
-  for( int irow=0; irow<nRows; irow++){
-
-    // h_cov starts at bin1, array starts at element 0
-    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
-  }
-
-
-
-  TH2D* h_corr = new TH2D("h_corr", "h_corr", nRows, 0, nRows, nRows, 0, nRows);
+  TH2D* h_corr = new TH2D("h_corr", "h_corr", nRow, 0, nRow, nRow, 0, nRow);
 
   // loop over elements of cov to build the corr
   // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
 
-  for( int irow=0; irow<nRows; irow++){
-    for( int icol=0; icol<nRows; icol++){
+//  for( int irow=0; irow<nRow; irow++){
+//    for( int icol=0; icol<nRow; icol++){
       
        // h_cov starts at bin1, array starts at element 0     
-      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
-      double denom = sqrt( var[irow]*var[icol] ); 
-      double e_corr= numer / denom ;
-      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
-    }
-  }
+//      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
+//      double denom = sqrt( var[irow]*var[icol] ); 
+//      double e_corr= numer / denom ;
+//      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
+//    }
+//  }
 
+  buildCorFromCov( *h_cov, nRow, *h_corr );
+
+  std::cout<<" h_corr.GetBinContent(1,1) = " <<  h_corr.GetBinContent(1,1) << std::endl;
+
+
+
+return;
   
   // sanity checks
 
