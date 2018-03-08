@@ -42,10 +42,10 @@ int plot_prodx_cov(){
   std::string str_syst = "prod_xsec";
  
   //TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
-  TFile* TFcov = new TFile("./2_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5_prod_xsec_cov.root");
+  TFile* TFcov = new TFile("./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_prodx_cov.root");
 
-  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
-  //  std::cout<<" e = " << (*matT)[1][1] << std::endl;
+  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prodx_cov");
+//  std::cout<<" e = " << (*matT)[4][4] << std::endl;
 
 
 
@@ -102,7 +102,11 @@ int plot_prodx_cov(){
   // - elemet 0 of TMatrixDSym corresponds to Bin(1,1) of the TH2D
   TMatrixTSym_to_TH2D(*matT, nRow, 0, *h_cov );
 
-
+  std::cout<<" nRow = " << nRow << std::endl;
+  for( int i=0; i< nRow; i++){
+    std::cout<<"££££" << std::endl;
+    std::cout<<" h_cov->GetBinContent(i+1, i+1) = " << h_cov->GetBinContent(i+1, i+1) << std::endl; 
+  }
 
 //  std::cout<<""<<std::endl;
 //  std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
@@ -131,9 +135,11 @@ int plot_prodx_cov(){
 //  plot_TH2D_cov_default_colz_small( *h_cov, "prod_xsec", "", "Production xs syst"  );
 
 
-  double array = extractArrayDaigCov_var( *h_cov, nRow);
+  double array[nRow] = extractArrayDaigCov_var( *h_cov, nRow);
   std::cout<<" array[4] = " << array[4] << std::endl;
 
+  double sqrt_array_4 =  sqrt( array[4] ) ;
+  std::cout<<"  sqrt( array[4] ) " << sqrt_array_4 << std::endl; 
 
 
 
