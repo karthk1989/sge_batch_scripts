@@ -16,10 +16,10 @@
   bool oaay 		= false;
   bool pbeamx 		= false;
   bool pbeamy		= false;
-  bool prodx 		= false;		int prodxThrows = 100;
+  bool prodx 		= true;		int prodxThrows = 100;
   bool snextbar		= false;
   bool snleadbar	= false;
-  bool snmult		= true;		int snmultThrows = 100;
+  bool snmult		= false;		int snmultThrows = 100;
 
   std::string save_prefix = "1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_";
 
@@ -351,8 +351,10 @@
        //std::cout << nomvals[i] << std::endl;
        for(int j=0; j<nEntries; j++){
          if(nomvals[i]>0. && nomvals[j]>0.){
-           (*cov)(i,j) += (1.0-throws[i]/nomvals[i])*(1.0-throws[j]/nomvals[j])/(double)nthrows;
+           (*cov)(i,j) += (1.0-throws[i]/nomvals[i])*(1.0-throws[j]/nomvals[j])/(double)nthrows;           
          }  
+       std::cout<<" sqrt( cov(i,i)) = " << sqrt( cov(i,i) ) << std::endl;
+       //double err = sqrt( cov(i,i));  if( err > 1.0 ){  std::cout<<"  err = " << err << std::endl; }
        }
      }  
    }
