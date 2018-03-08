@@ -317,16 +317,33 @@ void plot_TH2D_cov_default_colz_large_cutOut( TH2D& h_cov, std::string saveTag="
 // Not that histo bin numbered from 1 upwards
 double extractArrayDaigCov_var( TH2D& h_cov, int nRow){
 
+// var_i = cov_ii = (sig)^2
+
   const int nRowConst = nRow;
   double var[ nRowConst ];
   for( int irow=0; irow<nRowConst; irow++){
 
     // h_cov starts at bin1
-    // array starts at element 0
+    // array starts at element 
     var[irow] = h_cov.GetBinContent( irow+1, irow+1 );
-  }
 
+    //std::cout<<" h_cov.GetBinContent( irow+1, irow+1 ) = " << h_cov.GetBinContent( irow+1, irow+1 ) << std::endl;
+  }
   return var;
+}
+
+double extracArray_sig(TH2D& h_cov, int nRow){
+
+// sig = sqrt( var_i ) = sqrt( cov_ii )
+
+  double var = extractArrayDaigCov_var( *h_cov, nRow);
+  double err[nRow];
+
+  for( i=0; i++ i<nRow ){
+
+    err[i] = sqrt( var[i] );
+  }
+  return err;
 }
 
 
