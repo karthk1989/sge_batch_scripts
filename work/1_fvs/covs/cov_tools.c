@@ -368,28 +368,26 @@ double extracArray_sig(TH2D& h_cov, int nRow){
 
   void buildCorFromCov( TH2D& h_cov, int nRow, TH2D& h_corr ){
 
-  //double var = extractArrayDaigCov_var( TH2D& h_cov, int nRow);
-
-
-  // loop over the covariance matrix diagonal elements
-  // cov_ii = var_i = (sig_i)^2
-  // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
-  const int nRowConst = nRow;
-  double var[ nRowConst ];
-  for( int irow=0; irow<nRow; irow++){
-
-    // h_cov starts at bin1, array starts at element 0
-    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
-  }
 
   for( int irow=0; irow<nRow; irow++){
+
+      double cov_ii = h_cov->GetBinContent( irow+1, irow+1 );
+
     for( int icol=0; icol<nRow; icol++){
-      
+
+       double cov_kk = h_cov->GetBinContent( icol+1, icol+1 );
+       double cov_ik = h_cov->GetBinContent( irow+1, icol+1 );
+    
+       double cor_ik = cov_ik / sqrt( cov_ii * cov_kk );
+
+       h_corr->SetBinContent( irow+1, icol+1, cor_ik );
+ 
        // h_cov starts at bin1, array starts at element 0     
-      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
-      double denom = sqrt( var[irow]*var[icol] ); 
-      double e_corr= numer / denom ;
-      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
+//      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
+//      double denom = sqrt( var[irow]*var[icol] ); 
+//      double e_corr= numer / denom ;
+//      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
+
     }
   }
 
