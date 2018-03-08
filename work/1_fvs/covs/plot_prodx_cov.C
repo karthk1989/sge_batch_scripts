@@ -28,7 +28,9 @@ int plot_prodx_cov(){
   // --- XXX --- THINGS TO EDIT --- XXX --- ///
 	
   const int nbins = 20;
-  const int ndets = (1+1+1+7 + 4)*2 ;
+
+//  const int ndets = (1+1+1+7 + 4)*2 ;
+  const int ndets = 6*2;
   const int nflavours = 4;
   const int nBinsPerDet = nbins*nflavours;
 
@@ -42,9 +44,13 @@ int plot_prodx_cov(){
   std::string str_syst = "prod_xsec";
  
   //TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
-  TFile* TFcov = new TFile("./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_prodx_cov.root");
+  //TFile* TFcov = new TFile("./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_prodx_cov.root");
+  //TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prodx_cov");
 
-  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prodx_cov");
+  TFile* TFcov = new TFile("./offAxis_Benjamin__sk_nd5_hkToch_hkHak_hkkBis_hhkBoh_oaax_cov.root");
+  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("oaax_cov");
+
+
 //  std::cout<<" e = " << (*matT)[4][4] << std::endl;
 
 
