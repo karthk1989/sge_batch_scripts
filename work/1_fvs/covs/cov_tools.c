@@ -4,6 +4,9 @@
 // written for error_scripts syst calcs of flux
 
 
+//#include<TH2.h>
+//#include<TH2D.h>
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////// Header Section //////////////////////////////////////////////////////////////////////////////////////   
@@ -17,7 +20,7 @@
 
 
 
-// TMatrixDSym* cov = new TMatrixDSym(nRows);
+// TMatrixDSym* cov = new TMatrixDSym(nRow);
 // (*cov)[irow][jcolumn] = e; 
 
 
@@ -45,81 +48,73 @@ void TMatrixTSym_to_TH2D( TMatrixTSym<double>& matT, int nRow,  int minRow=0, TH
       return_h.SetBinContent( irow+1, jcolumn+1, e );
     }
   }
-  return ;//returnd_h;
+  return ;
 }
 
 
 // Read out the min and max bins of a TH2D histo
+
+
+
+// Return the min and max bins of a TH2D histo
+// min, minRow, minCol, mac, macRow, maxCol, to be passsed by reference and filled
+//****************************************************
+void returnMinMax_TH2D( TH2D& h, int nRow, int nCol, double &min, int &minRow, int &minCol, double &max, int &maxRow, int &maxCol, bool readOut ){
+//****************************************************
+//****************************************************
+
+  if( !(min && minCol && max && maxRow && maxCol) ){ 
+
+    min = max = 0.0;  minCol = maxCol = minRow = maxRow = 0;
+    std::cout< " agh " << std::endl; 
+   }
+ 
+  for( int irow = 0 ; irow< nRow; irow++ ){
+    for( int jcolumn = 0;  jcolumn< nCol; jcolumn++ ){
+
+      //  +1 because first histo bin is bin1  (bin0 is overlfow)
+      double e = h.GetBinContent( irow+1, jcolumn+1 );
+      //std::cout<<"  - Bin(" << irow << ", " << jcolumn << ") = " << e << std::endl;  
+      //if( irow == 0 && jcolumn == 0 )  min = max = e;
+
+      if( e < min ) {min = e; minRow = irow; minCol =jcolumn; }
+      if( e > max ) {max = e; maxRow = irow; maxCol =jcolumn; }
+
+      //std::cout<<"Min bin:  ("<< minRow <<", "<< minCol <<") = " << min << std::endl;
+      //std::cout<<"Max bin:  ("<< maxRow <<", "<< maxCol <<") = " << max << std::endl;      
+    }// jcolumn
+  }// irow
+
+
+  if( readOut ){
+    if( min && minRow && minCol ) std::cout<<"Min bin:  ("<< minRow <<", "<< minCol <<") = " << min << std::endl;
+    if( max && maxRow && maxCol ) std::cout<<"Max bin:  ("<< maxRow <<", "<< maxCol <<") = " << max << std::endl;
+  }
+
+  return;
+}
+
 
 //****************************************************
 void readOutMinMax_TH2D( TH2D& h, const int nRow, const int nCol ){
 //****************************************************
  //****************************************************
 
-  double min; int minRow, minCol;
-  double max; int maxRow, maxCol;
+  double min = 9999.0;  int minRow = 9999;  int minCol = 9999;
+  double max = -9999.0; int maxRow = -9999; int maxCol = -9999;
  
-  for( int irow = 0 ; irow< 8/*nRow*/; irow++ ){
-    for( int jcol = 0;  jcol< nCol; jcol++ ){
 
-      //  +1 because first histo bin is bin1  (bin0 is overlfow)
-      double e = h.GetBinContent( irow+1, jcol+1 );
-      //std::cout<<"  - Bin(" << irow << ", " << jcol << ") = " << e << std::endl;
- 
-      //if( irow == jcol == 0 )  min = max = e;
-
-      if( e < min ){min = e; minRow = irow; minCol =jcol; }
-      if( e > max ){max = e; maxRow = irow; maxCol =jcol; }
-
-    }// jcolumn
-  }// irow
-
-
-  if( min && minRow && minCol ) std::cout<<"Min bin:  ("<< minRow <<", "<< minCol <<") = " << min << std::endl;
-  else std::cout<<"No min found! " << std::endl;
-  if( max && maxRow && maxCol ) std::cout<<"Max bin:  ("<< maxRow <<", "<< maxCol <<") = " << max << std::endl;
-  else std::cout<<"No max found! " << std::endl;
-
+  returnMinMax_TH2D( h, nRow,  nCol, min, minRow, minCol, max, maxRow, maxCol, true);
 
   return;
 }
 
 
-// Return the min and max bins of a TH2D histo
-// min, minRow, minCol, mac, macRow, maxCol, to be passsed by reference and filled
-//****************************************************
-void returnMinMax_TH2D( TH2D& h, int nRow, int nCol, int &min, int &minRow, int &minCol, int &max, int &maxRow, int &maxCol){
-//****************************************************
-//****************************************************
- 
-  for( int irow = 0 ; irow< nRow; irow++ ){
-    for( int jcolumn = 0;  jcolumn< nCol; jcolumn++ ){
-
-      //  +1 because first histo bin is bin1  (bin0 is overlfow)
-      double e = h->GetBinContent( irow+1, jcolumn+1 );
-  
-      if( irow == jcolumn == 0 )  min = max = e;
-
-      if( e < min ) {min = e; minRow = irow; minCol =jcol; }
-      if( e > max ) {max = e; maxRow = irow; maxCol =jcol; }
-
-    }// jcolumn
-  }// irow
-
-
-  if( min && minRow && minCol ) std::cout<<"Min bin:  ("<< minRow <<", "<< minCol <<") = " << min << std::endl;
-  if( max && maxRow && maxCol ) std::cout<<"Max bin:  ("<< maxRow <<", "<< maxCol <<") = " << max << std::endl;
-  return;
-}
-
-
-
-// Takes a TH2D
+// Takes a TH2D and plots onto lage canvas
 //****************************************************
 void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
 //****************************************************
 //****************************************************
-
 
   const char* ch_title = title.c_str();
 
@@ -157,7 +152,7 @@ void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std:
   //h_cov->GetZaxis()->SetRangeUser( 0.02, -0.02);
   //h_cov->GetZaxis()->SetRangeUser( -4, 4);
 
-  h_cov->SetTitle( ch_title );
+  h_cov.SetTitle( ch_title );
 
   Int_t nb = 5000;
   h_cov.SetContour(nb);
@@ -181,7 +176,7 @@ void plot_TH2D_cov_default_cloz_large( TH2D& h_cov, std::string saveTag="", std:
 
 
 
-void plot_TH2D_cov_default_cloz_small( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
+void plot_TH2D_cov_default_coz_small( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title=""  ){
 
 
   const char* ch_title = title.c_str();
@@ -251,7 +246,7 @@ void plot_TH2D_cov_default_cloz_small( TH2D& h_cov, std::string saveTag="", std:
 
  
 // Not that histo bin numbered from 1 upwards
-void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histMin0=0, int histMaxNminus1=1  ){
+void plot_TH2D_cov_default_colz_large_cutOut( TH2D& h_cov, std::string saveTag="", std::string saveLocation="$PWD", std::string title="", int histMin0=0, int histMaxNminus1=1  ){
 
 
   const char* ch_title = title.c_str();
@@ -315,15 +310,20 @@ void plot_TH2D_cov_default_cloz_large_cutOut( TH2D& h_cov, std::string saveTag="
 } 
 
 
+
+
+
+
 // Not that histo bin numbered from 1 upwards
-double extractArrayDaigCov_var( TH2D& h_cov, int nRrows){
+double extractArrayDaigCov_var( TH2D& h_cov, int nRow){
 
-  const int nRowsConst = nRows;
-  double var[ nRows ];
-  for( int irow=0; irow<nRowsConst; irow++){
+  const int nRowConst = nRow;
+  double var[ nRowConst ];
+  for( int irow=0; irow<nRowConst; irow++){
 
-    // h_cov starts at bin1, array starts at element 0
-    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
+    // h_cov starts at bin1
+    // array starts at element 0
+    var[irow] = h_cov.GetBinContent( irow+1, irow+1 );
   }
 
   return var;
@@ -335,29 +335,38 @@ double extractArrayDaigCov_var( TH2D& h_cov, int nRrows){
 
 
 
+ 
+
+
   ////////////////////////////////////////////////////////////////////////
   ////////////// Build and plot the full correlations matrix  /////////////
+
+  // (Uncorrelated absolute) Error_i = sig_i = sqrt( var_i ) = sqrt( cov_ii )
+
+  // cov_ii = var_i = (sig_i)^2
+  // cov diagonal  = error^2
+
+  // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
+  // corr diagonal = 1 
+
+  void buildCorFromCov( TH2D& h_cov, int nRow, TH2D& h_corr ){
+
+  //double var = extractArrayDaigCov_var( TH2D& h_cov, int nRow);
 
 
   // loop over the covariance matrix diagonal elements
   // cov_ii = var_i = (sig_i)^2
   // so uncorrelated error,  sig_i = sqrt( var(i) ) = sqrt{ cov_ii )
+  const int nRowConst = nRow;
+  double var[ nRowConst ];
+  for( int irow=0; irow<nRow; irow++){
 
+    // h_cov starts at bin1, array starts at element 0
+    var[irow] = h_cov->GetBinContent( irow+1, irow+1 );
+  }
 
-/// take a cov, extract the var from the diag, and form the correlation matrix
-
-void builCorFromCov = new TH2D( TH2D& h_cov, int nRows, TH2D& outCor ){
-
-  double var = extracArrayDaigCov_var( TH2D& h_cov, int nRrows);
-
-
-  TH2D* h_corr = new TH2D("h_corr", "h_corr", nRows, 0, nRows, nRows, 0, nRows);
-
-  // loop over elements of cov to build the corr
-  // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
-
-  for( int irow=0; irow<nRows; irow++){
-    for( int icol=0; icol<nRows; icol++){
+  for( int irow=0; irow<nRow; irow++){
+    for( int icol=0; icol<nRow; icol++){
       
        // h_cov starts at bin1, array starts at element 0     
       double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
@@ -371,6 +380,14 @@ void builCorFromCov = new TH2D( TH2D& h_cov, int nRows, TH2D& outCor ){
 
 }
 
+
+TH2D* test(){
+
+  TH2D* h_corr = new TH2D("h_corr", "h_corr", 5, 0, 5, 5, 0, 5);
+
+
+  return h_corr;
+}
 
 
 
