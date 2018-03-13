@@ -317,6 +317,13 @@ void plot_TH2D_cov_default_colz_large_cutOut( TH2D& h_cov, std::string saveTag="
 // Not that histo bin numbered from 1 upwards
 double extractArrayDaigCov_var( TH2D& h_cov, int nRow){
 
+//  Be careful when using this
+//  C++ does not let you return an array
+//  --> return a pointer to an array by specifying the array's name without an index
+//  double* array;
+//  array = extractArrayDaigCov_var( *h_cov, nRow);
+
+
 // var_i = cov_ii = (sig)^2
 
   const int nRowConst = nRow;
@@ -327,10 +334,12 @@ double extractArrayDaigCov_var( TH2D& h_cov, int nRow){
     // array starts at element 
     var[irow] = h_cov.GetBinContent( irow+1, irow+1 );
 
-    //std::cout<<" h_cov.GetBinContent( irow+1, irow+1 ) = " << h_cov.GetBinContent( irow+1, irow+1 ) << std::endl;
+    std::cout<<" h_cov.GetBinContent( irow+1, irow+1 ) = " << h_cov.GetBinContent( irow+1, irow+1 ) << std::endl;
   }
   return var;
 }
+
+
 
 double extracArray_sig(TH2D& h_cov, int nRow){
 
@@ -366,33 +375,23 @@ double extracArray_sig(TH2D& h_cov, int nRow){
   // corr_ik = cov_ik / (sig_i sig_k)  = cov_ik / sqrt(var_i var_k) = cov_ik / sqrt(cov_ii cov_kk)
   // corr diagonal = 1 
 
-  void buildCorFromCov( TH2D& h_cov, int nRow, TH2D& h_corr ){
+void buildCorFromCov( TH2D& h_cov, int nRow, TH2D& h_corr ){
 
 
   for( int irow=0; irow<nRow; irow++){
 
-      double cov_ii = h_cov->GetBinContent( irow+1, irow+1 );
+      double cov_ii = h_cov.GetBinContent( irow+1, irow+1 );
 
     for( int icol=0; icol<nRow; icol++){
 
-       double cov_kk = h_cov->GetBinContent( icol+1, icol+1 );
-       double cov_ik = h_cov->GetBinContent( irow+1, icol+1 );
+       double cov_kk = h_cov.GetBinContent( icol+1, icol+1 );
+       double cov_ik = h_cov.GetBinContent( irow+1, icol+1 );
     
        double cor_ik = cov_ik / sqrt( cov_ii * cov_kk );
 
-       h_corr->SetBinContent( irow+1, icol+1, cor_ik );
- 
-       // h_cov starts at bin1, array starts at element 0     
-//      double numer = h_cov->GetBinContent( irow+1, icol+1 ) ;
-//      double denom = sqrt( var[irow]*var[icol] ); 
-//      double e_corr= numer / denom ;
-//      h_corr->SetBinContent( irow+1, icol+1 ,  e_corr );
-
+       h_corr.SetBinContent( irow+1, icol+1, cor_ik );
     }
   }
-
-
-
 }
 
 
