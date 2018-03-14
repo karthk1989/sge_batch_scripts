@@ -744,18 +744,21 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
   TCanvas* c_err =  new TCanvas("c_err", "c_err", 1000, 1000);
   gStyle->SetLineWidth(2);
+  gStyle->SetOptStat(0);
 
   h_err_corr_anue->SetLineColor(kCyan+1);
   h_err_corr_anue->SetLineWidth(3);
   h_err_corr_anue->GetYaxis()->SetTitle("Fractional Error");
   h_err_corr_anue->GetXaxis()->SetTitle("Enu (GeV)");
+  h_err_corr_anue->GetXaxis()->SetTitleOffset(1.4);
+  h_err_corr_anue->GetYaxis()->SetTitleOffset(1.6);
   h_err_corr_anue->Draw();
   h_err_corr_anue->GetYaxis()->SetRangeUser(0, 0.15); 
 
   h_err_corr_nue->SetLineColor(kBlue+1);
   h_err_corr_nue->SetLineWidth(3);
-  h_err_corr_nue->GetYaxis()->SetTitle("Fractional Error");
-  h_err_corr_nue->GetXaxis()->SetTitle("Enu (GeV)");
+//  h_err_corr_nue->GetYaxis()->SetTitle("Fractional Error");
+//  h_err_corr_nue->GetXaxis()->SetTitle("Enu (GeV)");
   h_err_corr_nue->Draw("SAME");
 
   h_err_corr_anumu->SetLineColor(kOrange+7);
@@ -765,8 +768,8 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   h_err_corr_numu->SetLineColor(kRed+1);
   h_err_corr_numu->SetLineWidth(3);
   h_err_corr_numu->Draw("SAME");
-  h_err_corr_numu->GetYaxis()->SetTitle("Fractional Error");
-  h_err_corr_numu->GetXaxis()->SetTitle("Enu (GeV)");
+//  h_err_corr_numu->GetYaxis()->SetTitle("Fractional Error");
+//  h_err_corr_numu->GetXaxis()->SetTitle("Enu (GeV)");
  
 
 
