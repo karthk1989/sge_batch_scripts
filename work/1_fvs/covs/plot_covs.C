@@ -703,40 +703,41 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
-  std::string  str_hist_err_det_numu = str_det +":  "+ str_syst +" - numu";
-  const char* ch_hist_err_det_numu = str_hist_err_det_numu.c_str();
+  std::string  str_hist_err_det = str_det +":  "+ str_syst;
+  const char* ch_hist_err_det = str_hist_err_det.c_str();
+
   double err_corr_numu[ nBinsFlav ];
-  TH1D* h_err_corr_numu = new TH1D("h_err_corr_numu", ch_hist_err_det_numu, nbins, bins);
+  TH1D* h_err_corr_numu = new TH1D("h_err_corr_numu", ch_hist_err_det, nbins, bins);
   for( int irow=0; irow<19; irow++ ){  // not plotting overflow bin 20
     double err = err_corr[ 0 + irow ];
     err_corr_numu[irow] = err;
     h_err_corr_numu->SetBinContent( irow+1, err); 
   }
 
-  std::string  str_hist_err_det_anumu = str_det +":  "+ str_syst +" - anti-numu";
-  const char* ch_hist_err_det_anumu = str_hist_err_det_anumu.c_str();
+//  std::string  str_hist_err_det_anumu = str_det +":  "+ str_syst +" - anti-numu";
+//  const char* ch_hist_err_det_anumu = str_hist_err_det_anumu.c_str();
   double err_corr_anumu[ nBinsFlav ];
-  TH1D* h_err_corr_anumu = new TH1D("h_err_corr_anumu", ch_hist_err_det_anumu, nbins, bins);
+  TH1D* h_err_corr_anumu = new TH1D("h_err_corr_anumu", ch_hist_err_det, nbins, bins);
   for( int irow=0; irow<19; irow++ ){
     double err = err_corr[ 20 + irow ];
     err_corr_anumu[irow]=err;
     h_err_corr_anumu->SetBinContent( irow+1, err);
   }
 
-  std::string  str_hist_err_det_nue = str_det +":  "+ str_syst +" - nue";
-  const char* ch_hist_err_det_nue = str_hist_err_det_nue.c_str();
+//  std::string  str_hist_err_det_nue = str_det +":  "+ str_syst +" - nue";
+//  const char* ch_hist_err_det_nue = str_hist_err_det_nue.c_str();
   double err_corr_nue[ nBinsFlav ];
-  TH1D* h_err_corr_nue = new TH1D("h_err_corr_nue", ch_hist_err_det_nue, nbins, bins);
+  TH1D* h_err_corr_nue = new TH1D("h_err_corr_nue", ch_hist_err_det, nbins, bins);
   for( int irow=0; irow<19; irow++ ){
     double err = err_corr[ 40 + irow ];
     err_corr_nue[irow]=err;
     h_err_corr_nue->SetBinContent( irow+1, err);
   } 
 
-  std::string  str_hist_err_det_anue = str_det +":  "+ str_syst +" - anti-nue";
-  const char* ch_hist_err_det_anue = str_hist_err_det_anue.c_str();
+//  std::string  str_hist_err_det_anue = str_det +":  "+ str_syst +" - anti-nue";
+//  const char* ch_hist_err_det_anue = str_hist_err_det_anue.c_str();
   double err_corr_anue[ nBinsFlav ];
-  TH1D* h_err_corr_anue = new TH1D("h_err_corr_anue", ch_hist_err_det_anue, nbins, bins);
+  TH1D* h_err_corr_anue = new TH1D("h_err_corr_anue", ch_hist_err_det, nbins, bins);
   for( int irow=0; irow<19; irow++ ){
     double err = err_corr[ 60 + irow ];
     err_corr_anue[irow]=err;
