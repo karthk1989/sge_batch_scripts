@@ -296,6 +296,13 @@
 
    int nEntries = nbins*ndet*nflavor;
 
+   std::cout<<""<<std::endl;
+   std::cout<<"nbins = "<< nbins <<std::endl;
+   std::cout<<"ndet = "<< ndet << std::endl;
+   std::cout<<"nflavor = "<< nflavor << std::endl;
+   std::cout<<""<<std::endl;
+   std::cout<<"--> nEntries = nbins*ndet*nflavor = "<< nEntries << std::endl;
+   std::cout<<""<<std::endl;
 
    //Set up the arrays and covariance matrix
    double *nomvals = new double[nEntries];
@@ -353,12 +360,13 @@
          if(nomvals[i]>0. && nomvals[j]>0.){
            (*cov)(i,j) += (1.0-throws[i]/nomvals[i])*(1.0-throws[j]/nomvals[j])/(double)nthrows;           
          }  
-       std::cout<<" sqrt( cov(i,i)) = " << sqrt( cov(i,i) ) << std::endl;
-       //double err = sqrt( cov(i,i));  if( err > 1.0 ){  std::cout<<"  err = " << err << std::endl; }
        }
-     }  
+     }
    }
-   
+
+  std::cout<<" nEntries = " << nEntries << std::endl;  
+  for( i=0;  i<nEntries; i++) std::cout<<"Error = sqrt[ cov(" << i <<"," << i << ")  ]= " << sqrt( (*cov)(i,i) ) << std::endl;
+ 
   std::cout<<" --- Saving cov --- " <<  cov_name << " --- " <<std::endl;
   TFile *fout = new TFile( save1 ,"RECREATE");
   cov->Write( cov_name );
