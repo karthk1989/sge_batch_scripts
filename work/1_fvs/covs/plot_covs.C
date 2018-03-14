@@ -325,117 +325,117 @@ int plot_covs(){
   //TH2D h_corr_det = T2HD("h_corr_det", "h_corr_det", nBinsPerDet, 0, nBinsPerDet, nBinsPerDet, 0, nBinsPerDet );
 
   std::string str_det_1 = "1_sk_fhc";
-//  int det1_corr = cutOutDet_corr(  h_corr, det_1_lowBin,  det_1_highBin,  nBinsPerDet,  str_det_1, str_syst );
+  //int det1_corr = cutOutDet_corr(  h_corr, det_1_lowBin,  det_1_highBin,  nBinsPerDet,  str_det_1, str_syst );
   int det1_err = getErrosFromCov( h_cov,  det_1_lowBin, det_1_highBin,  nBinsPerDet,  str_det_1 , str_syst );
 
-return;
-
   std::string str_det_2 = "1_sk_rhc";
-  int det2_corr = cutOutDet_corr(  h_corr, det_2_lowBin,  det_2_highBin,  nBinsPerDet,  str_det_2, str_syst );
+  //int det2_corr = cutOutDet_corr(  h_corr, det_2_lowBin,  det_2_highBin,  nBinsPerDet,  str_det_2, str_syst );
   int det2_err = getErrosFromCov( h_cov,  det_2_lowBin, det_2_highBin,  nBinsPerDet,  str_det_2 , str_syst );
 
   std::string str_det_3 = "nd5_fhc";
-  int det3_corr = cutOutDet_corr(  h_corr, det_3_lowBin,  det_3_highBin,  nBinsPerDet,  str_det_3, str_syst );
+  //int det3_corr = cutOutDet_corr(  h_corr, det_3_lowBin,  det_3_highBin,  nBinsPerDet,  str_det_3, str_syst );
   int det3_err = getErrosFromCov( h_cov,  det_3_lowBin, det_3_highBin,  nBinsPerDet,  str_det_3 , str_syst );
 
   std::string str_det_4 = "nd5_rhc";
-  int det4_corr = cutOutDet_corr(  h_corr, det_4_lowBin,  det_4_highBin,  nBinsPerDet,  str_det_4, str_syst );
+  ///int det4_corr = cutOutDet_corr(  h_corr, det_4_lowBin,  det_4_highBin,  nBinsPerDet,  str_det_4, str_syst );
   int det4_err = getErrosFromCov( h_cov,  det_4_lowBin, det_4_highBin,  nBinsPerDet,  str_det_4 , str_syst );
 
+
+
   std::string str_det_5 = "nd2_fhc";
-  int det5_corr = cutOutDet_corr(  h_corr, det_5_lowBin,  det_5_highBin,  nBinsPerDet,  str_det_5, str_syst );
+  //int det5_corr = cutOutDet_corr(  h_corr, det_5_lowBin,  det_5_highBin,  nBinsPerDet,  str_det_5, str_syst );
   int det5_err = getErrosFromCov( h_cov,  det_5_lowBin, det_5_highBin,  nBinsPerDet,  str_det_5 , str_syst );
 
   std::string str_det_6 = "nd2_rhc";
-  int det6_corr = cutOutDet_corr(  h_corr, det_6_lowBin,  det_6_highBin,  nBinsPerDet,  str_det_6, str_syst );
+  //int det6_corr = cutOutDet_corr(  h_corr, det_6_lowBin,  det_6_highBin,  nBinsPerDet,  str_det_6, str_syst );
   int det6_err = getErrosFromCov( h_cov,  det_6_lowBin, det_6_highBin,  nBinsPerDet,  str_det_6 , str_syst );
 
   std::string str_det_7 = "nd9_h7p7_1_fhc";
-  int det7_corr = cutOutDet_corr(  h_corr, det_7_lowBin,  det_7_highBin,  nBinsPerDet,  str_det_7, str_syst );
+  //int det7_corr = cutOutDet_corr(  h_corr, det_7_lowBin,  det_7_highBin,  nBinsPerDet,  str_det_7, str_syst );
   int det7_err = getErrosFromCov( h_cov,  det_7_lowBin, det_7_highBin,  nBinsPerDet,  str_det_7 , str_syst );
 
   std::string str_det_8 = "nd9_h7p7_1_rhc";
-  int det8_corr = cutOutDet_corr(  h_corr, det_8_lowBin,  det_8_highBin,  nBinsPerDet,  str_det_8, str_syst );
+  //int det8_corr = cutOutDet_corr(  h_corr, det_8_lowBin,  det_8_highBin,  nBinsPerDet,  str_det_8, str_syst );
   int det8_err = getErrosFromCov( h_cov,  det_8_lowBin, det_8_highBin,  nBinsPerDet,  str_det_8 , str_syst );
 
   std::string str_det_9 = "nd9_h7p7_2_fhc";
-  int det9_corr = cutOutDet_corr(  h_corr, det_9_lowBin,  det_9_highBin,  nBinsPerDet,  str_det_9, str_syst );
+  //int det9_corr = cutOutDet_corr(  h_corr, det_9_lowBin,  det_9_highBin,  nBinsPerDet,  str_det_9, str_syst );
   int det9_err = getErrosFromCov( h_cov,  det_9_lowBin, det_9_highBin,  nBinsPerDet,  str_det_9 , str_syst );
 
   std::string str_det_10 = "nd9_h7p7_2_rhc";
-  int det10_corr = cutOutDet_corr(  h_corr, det_10_lowBin,  det_10_highBin,  nBinsPerDet,  str_det_10, str_syst );
+  //int det10_corr = cutOutDet_corr(  h_corr, det_10_lowBin,  det_10_highBin,  nBinsPerDet,  str_det_10, str_syst );
   int det10_err = getErrosFromCov( h_cov,  det_10_lowBin, det_10_highBin,  nBinsPerDet,  str_det_10 , str_syst );
 
   std::string str_det_11 = "nd9_h7p7_3_fhc";
-  int det11_corr = cutOutDet_corr(  h_corr, det_11_lowBin,  det_11_highBin,  nBinsPerDet,  str_det_11, str_syst );
+  //int det11_corr = cutOutDet_corr(  h_corr, det_11_lowBin,  det_11_highBin,  nBinsPerDet,  str_det_11, str_syst );
   int det11_err = getErrosFromCov( h_cov,  det_11_lowBin, det_11_highBin,  nBinsPerDet,  str_det_11 , str_syst );
 
   std::string str_det_12 = "nd9_h7p7_3_rhc";
-  int det12_corr = cutOutDet_corr(  h_corr, det_12_lowBin,  det_12_highBin,  nBinsPerDet,  str_det_12, str_syst );
+  //int det12_corr = cutOutDet_corr(  h_corr, det_12_lowBin,  det_12_highBin,  nBinsPerDet,  str_det_12, str_syst );
   int det12_err = getErrosFromCov( h_cov,  det_12_lowBin, det_12_highBin,  nBinsPerDet,  str_det_12 , str_syst );
 
   std::string str_det_13 = "nd9_h7p7_4_fhc";
-  int det13_corr = cutOutDet_corr(  h_corr, det_13_lowBin,  det_13_highBin,  nBinsPerDet,  str_det_13, str_syst );
+  //int det13_corr = cutOutDet_corr(  h_corr, det_13_lowBin,  det_13_highBin,  nBinsPerDet,  str_det_13, str_syst );
   int det13_err = getErrosFromCov( h_cov,  det_13_lowBin, det_13_highBin,  nBinsPerDet,  str_det_13 , str_syst );
 
   std::string str_det_14 = "nd9_h7p7_4_rhc";
-  int det14_corr = cutOutDet_corr(  h_corr, det_14_lowBin,  det_14_highBin,  nBinsPerDet,  str_det_14, str_syst );
+  //int det14_corr = cutOutDet_corr(  h_corr, det_14_lowBin,  det_14_highBin,  nBinsPerDet,  str_det_14, str_syst );
   int det14_err = getErrosFromCov( h_cov,  det_14_lowBin, det_14_highBin,  nBinsPerDet,  str_det_14 , str_syst );
 
   std::string str_det_15 = "nd9_h7p7_5_fhc";
-  int det15_corr = cutOutDet_corr(  h_corr, det_15_lowBin,  det_15_highBin,  nBinsPerDet,  str_det_15, str_syst );
+  //int det15_corr = cutOutDet_corr(  h_corr, det_15_lowBin,  det_15_highBin,  nBinsPerDet,  str_det_15, str_syst );
   int det15_err = getErrosFromCov( h_cov,  det_15_lowBin, det_15_highBin,  nBinsPerDet,  str_det_15 , str_syst );
 
   std::string str_det_16 = "nd9_h7p7_5_rhc";
-  int det16_corr = cutOutDet_corr(  h_corr, det_16_lowBin,  det_16_highBin,  nBinsPerDet,  str_det_16, str_syst );
+  //int det16_corr = cutOutDet_corr(  h_corr, det_16_lowBin,  det_16_highBin,  nBinsPerDet,  str_det_16, str_syst );
   int det16_err = getErrosFromCov( h_cov,  det_16_lowBin, det_16_highBin,  nBinsPerDet,  str_det_16 , str_syst );
 
   std::string str_det_17 = "nd9_h7p7_6_fhc";
-  int det17_corr = cutOutDet_corr(  h_corr, det_17_lowBin,  det_17_highBin,  nBinsPerDet,  str_det_17, str_syst );
+  //int det17_corr = cutOutDet_corr(  h_corr, det_17_lowBin,  det_17_highBin,  nBinsPerDet,  str_det_17, str_syst );
   int det17_err = getErrosFromCov( h_cov,  det_17_lowBin, det_17_highBin,  nBinsPerDet,  str_det_17 , str_syst );
 
   std::string str_det_18 = "nd9_h7p7_6_rhc";
-  int det18_corr = cutOutDet_corr(  h_corr, det_18_lowBin,  det_18_highBin,  nBinsPerDet,  str_det_18, str_syst );
+  //int det18_corr = cutOutDet_corr(  h_corr, det_18_lowBin,  det_18_highBin,  nBinsPerDet,  str_det_18, str_syst );
   int det18_err = getErrosFromCov( h_cov,  det_18_lowBin, det_18_highBin,  nBinsPerDet,  str_det_18 , str_syst );
 
   std::string str_det_19 = "nd9_h7p7_7_fhc";
-  int det19_corr = cutOutDet_corr(  h_corr, det_19_lowBin,  det_19_highBin,  nBinsPerDet,  str_det_19, str_syst );
+  //int det19_corr = cutOutDet_corr(  h_corr, det_19_lowBin,  det_19_highBin,  nBinsPerDet,  str_det_19, str_syst );
   int det19_err = getErrosFromCov( h_cov,  det_19_lowBin, det_19_highBin,  nBinsPerDet,  str_det_19 , str_syst );
 
   std::string str_det_20 = "nd9_h7p7_7_rhc";
-  int det20_corr = cutOutDet_corr(  h_corr, det_20_lowBin,  det_20_highBin,  nBinsPerDet,  str_det_20, str_syst );
+  //int det20_corr = cutOutDet_corr(  h_corr, det_20_lowBin,  det_20_highBin,  nBinsPerDet,  str_det_20, str_syst );
   int det20_err = getErrosFromCov( h_cov,  det_20_lowBin, det_20_highBin,  nBinsPerDet,  str_det_20 , str_syst );
 
   std::string str_det_21 = "2_hk2_fhc";
-  int det21_corr = cutOutDet_corr(  h_corr, det_21_lowBin,  det_21_highBin,  nBinsPerDet,  str_det_21, str_syst );
+  //int det21_corr = cutOutDet_corr(  h_corr, det_21_lowBin,  det_21_highBin,  nBinsPerDet,  str_det_21, str_syst );
   int det21_err = getErrosFromCov( h_cov,  det_21_lowBin, det_21_highBin,  nBinsPerDet,  str_det_21 , str_syst );
 
   std::string str_det_22 = "2_hk2_rhc";
-  int det22_corr = cutOutDet_corr(  h_corr, det_22_lowBin,  det_22_highBin,  nBinsPerDet,  str_det_22, str_syst );
+  //int det22_corr = cutOutDet_corr(  h_corr, det_22_lowBin,  det_22_highBin,  nBinsPerDet,  str_det_22, str_syst );
   int det22_err = getErrosFromCov( h_cov,  det_22_lowBin, det_22_highBin,  nBinsPerDet,  str_det_22 , str_syst );
 
   std::string str_det_23 = "3_hk3_fhc";
-  int det23_corr = cutOutDet_corr(  h_corr, det_23_lowBin,  det_23_highBin,  nBinsPerDet,  str_det_23, str_syst );
+  //int det23_corr = cutOutDet_corr(  h_corr, det_23_lowBin,  det_23_highBin,  nBinsPerDet,  str_det_23, str_syst );
   int det23_err = getErrosFromCov( h_cov,  det_23_lowBin, det_23_highBin,  nBinsPerDet,  str_det_23 , str_syst );
 
   std::string str_det_24 = "3_hk3_rhc";
-  int det24_corr = cutOutDet_corr(  h_corr, det_24_lowBin,  det_24_highBin,  nBinsPerDet,  str_det_24, str_syst );
+  //int det24_corr = cutOutDet_corr(  h_corr, det_24_lowBin,  det_24_highBin,  nBinsPerDet,  str_det_24, str_syst );
   int det24_err = getErrosFromCov( h_cov,  det_24_lowBin, det_24_highBin,  nBinsPerDet,  str_det_24 , str_syst );
 
   std::string str_det_25 = "4_hk4_fhc";
-  int det25_corr = cutOutDet_corr(  h_corr, det_25_lowBin,  det_25_highBin,  nBinsPerDet,  str_det_25, str_syst );
+  //int det25_corr = cutOutDet_corr(  h_corr, det_25_lowBin,  det_25_highBin,  nBinsPerDet,  str_det_25, str_syst );
   int det25_err = getErrosFromCov( h_cov,  det_25_lowBin, det_25_highBin,  nBinsPerDet,  str_det_25 , str_syst );
 
   std::string str_det_26 = "4_hk4_rhc";
-  int det26_corr = cutOutDet_corr(  h_corr, det_26_lowBin,  det_26_highBin,  nBinsPerDet,  str_det_26, str_syst );
+  //int det26_corr = cutOutDet_corr(  h_corr, det_26_lowBin,  det_26_highBin,  nBinsPerDet,  str_det_26, str_syst );
   int det26_err = getErrosFromCov( h_cov,  det_26_lowBin, det_26_highBin,  nBinsPerDet,  str_det_26 , str_syst );
 
   std::string str_det_27 = "5_hk5_fhc";
-  int det27_corr = cutOutDet_corr(  h_corr, det_27_lowBin,  det_27_highBin,  nBinsPerDet,  str_det_27, str_syst );
+  //int det27_corr = cutOutDet_corr(  h_corr, det_27_lowBin,  det_27_highBin,  nBinsPerDet,  str_det_27, str_syst );
   int det27_err = getErrosFromCov( h_cov,  det_27_lowBin, det_27_highBin,  nBinsPerDet,  str_det_27 , str_syst );
 
   std::string str_det_28 = "5_hk5_rhc";
-  int det28_corr = cutOutDet_corr(  h_corr, det_28_lowBin,  det_28_highBin,  nBinsPerDet,  str_det_28, str_syst );
+  //int det28_corr = cutOutDet_corr(  h_corr, det_28_lowBin,  det_28_highBin,  nBinsPerDet,  str_det_28, str_syst );
   int det28_err = getErrosFromCov( h_cov,  det_28_lowBin, det_28_highBin,  nBinsPerDet,  str_det_28 , str_syst );
 
 
@@ -653,12 +653,16 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   for( int irow=0; irow<nBinsPerDet; irow++){
 
     // h_cov starts at bin1, array starts at element 0
-    //std::cout<<" h_cov ( " <<  irow + lowBin <<" ," <<  irow + lowBin  << ") = " <<
-    //  h_cov->GetBinContent( irow + lowBin, irow + lowBin ) << std::endl;
+    std::cout<<" h_cov ( " <<  irow + lowBin <<" ," <<  irow + lowBin  << ") = " <<
+      h_cov->GetBinContent( irow + lowBin, irow + lowBin ) << std::endl;
     
     var_det[irow] = h_cov->GetBinContent( irow + lowBin, irow + lowBin );
     err_corr[irow] = sqrt( var_det[irow] );    
+    std::cout<< "Error = " << err_corr[irow] <<std::endl;
   }
+
+  std::cout<<""<<std::endl;
+  std::cout<<""<<std::endl;
 
   const int nBinsFlav=20;
 
@@ -702,15 +706,18 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 //
 
 
+  
+
 
   std::string  str_hist_err_det = str_det +":  "+ str_syst;
   const char* ch_hist_err_det = str_hist_err_det.c_str();
 
-  double err_corr_numu[ nBinsFlav ];
+//  double err_corr_numu[ nBinsFlav ];
   TH1D* h_err_corr_numu = new TH1D("h_err_corr_numu", ch_hist_err_det, nbins, bins);
   for( int irow=0; irow<19; irow++ ){  // not plotting overflow bin 20
     double err = err_corr[ 0 + irow ];
-    err_corr_numu[irow] = err;
+    std::cout<<" numu, bin = "<< irow + 1 << " Err = " << err << std::endl;
+    //err_corr_numu[irow] = err;
     h_err_corr_numu->SetBinContent( irow+1, err); 
   }
 
@@ -748,7 +755,14 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
+  double max=0.0;
 
+  if( str_syst=="prodx" ) max = 0.2;
+  if( str_syst=="alttert") max = 0.3;
+//  if( h_err_corr_anue->GetMaximum() >  max)  max = h_err_corr_anue->GetMaximum() ;
+//  if( h_err_corr_nue->GetMaximum() >  max)   max = h_err_corr_nue->GetMaximum() ;
+//  if( h_err_corr_anumu->GetMaximum() >  max) max = h_err_corr_numu->GetMaximum() ;
+//  if( h_err_corr_anumu->GetMaximum() >  max) max = h_err_corr_anumu->GetMaximum() ;
 
 
   TCanvas* c_err =  new TCanvas("c_err", "c_err", 1000, 1000);
@@ -762,7 +776,7 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   h_err_corr_anue->GetXaxis()->SetTitleOffset(1.4);
   h_err_corr_anue->GetYaxis()->SetTitleOffset(1.6);
   h_err_corr_anue->Draw();
-  h_err_corr_anue->GetYaxis()->SetRangeUser(0, 0.15); 
+  h_err_corr_anue->GetYaxis()->SetRangeUser(0, max); 
 
   h_err_corr_nue->SetLineColor(kBlue+1);
   h_err_corr_nue->SetLineWidth(3);
