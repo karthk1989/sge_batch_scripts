@@ -643,19 +643,21 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
   //////// Retrieving the errors from diag of full cov ///////
   std::cout<<" --- Retrieving the errors from diag of full cov --- " << std::endl;
-
+  std::cout<<""<< std::endl;
+  std::cout<<" Det: " << str_det << ",  Syst: " << str_syst <<  std::endl;
+  std::cout<<""<< std::endl;
 
   double var_det[ nBinsPerDet ];
-  double err_corr_nd5_fhc[ nBinsPerDet ];
+  double err_corr[ nBinsPerDet ];
 
   for( int irow=0; irow<nBinsPerDet; irow++){
 
     // h_cov starts at bin1, array starts at element 0
-    std::cout<<" h_cov ( " <<  irow + lowBin <<" ," <<  irow + lowBin  << ") = " <<
-      h_cov->GetBinContent( irow + lowBin, irow + lowBin ) << std::endl;
+    //std::cout<<" h_cov ( " <<  irow + lowBin <<" ," <<  irow + lowBin  << ") = " <<
+    //  h_cov->GetBinContent( irow + lowBin, irow + lowBin ) << std::endl;
     
     var_det[irow] = h_cov->GetBinContent( irow + lowBin, irow + lowBin );
-    err_corr_nd5_fhc[irow] = sqrt( var_det[irow] );    
+    err_corr[irow] = sqrt( var_det[irow] );    
   }
 
   const int nBinsFlav=20;
@@ -666,73 +668,71 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
-//  double err_corr_nd5_fhc_numu[ nBinsFlav ];
-//  TH1D* h_err_corr_nd5_fhc_numu = new TH1D("h_err_corr_nd5_fhc_numu", "h_err_corr_nd5_fhc_numu", nBinsFlav, 0, nBinsFlav);
+//  double err_corr_numu[ nBinsFlav ];
+//  TH1D* h_err_corr_numu = new TH1D("h_err_corr_numu", "h_err_corr_numu", nBinsFlav, 0, nBinsFlav);
 //
 //  for( int irow=0; irow<20; irow++ ){
-//    double err = err_corr_nd5_fhc[ 0 + irow ];
-//    err_corr_nd5_fhc_numu[irow] = err;
-//    h_err_corr_nd5_fhc_numu->SetBinContent( irow+1, err); 
+//    double err = err_corr_[ 0 + irow ];
+//    err_corr_numu[irow] = err;
+//    h_err_corr_numu->SetBinContent( irow+1, err); 
 //  }
 //  std::cout<<"dddbug2" <<std::endl;
 //
-//  double err_corr_nd5_fhc_anumu[ 20 ];
-//  TH1D* h_err_corr_nd5_fhc_anumu = new TH1D("h_err_corr_nd5_fhc_anumu", "h_err_corr_nd5_fhc_anumu", nBinsFlav, 0, nBinsFlav);
+//  double err_corr_anumu[ 20 ];
+//  TH1D* h_err_corr_anumu = new TH1D("h_err_corr_anumu", "h_err_corr_anumu", nBinsFlav, 0, nBinsFlav);
 //  for( int irow=0; irow<20; irow++ ){
-//    double err = err_corr_nd5_fhc[ 20 + irow ];
-//    err_corr_nd5_fhc_anumu[irow]=err;
-//    h_err_corr_nd5_fhc_anumu->SetBinContent( irow+1, err);
+//    double err = err_corr[ 20 + irow ];
+//    err_corr_anumu[irow]=err;
+//    h_err_corr_anumu->SetBinContent( irow+1, err);
 //  }
-//  double err_corr_nd5_fhc_nue[ 20 ];
-//  TH1D* h_err_corr_nd5_fhc_nue = new TH1D("h_err_corr_nd5_fhc_nue", "h_err_corr_nd5_fhc_nue", nBinsFlav, 0, nBinsFlav);
+//  double err_corr_nue[ 20 ];
+//  TH1D* h_err_corr_nue = new TH1D("h_err_corr_nue", "h_err_corr_nue", nBinsFlav, 0, nBinsFlav);
 //  for( int irow=0; irow<20; irow++ ){
-//    double err = err_corr_nd5_fhc[ 40 + irow ];
-//    err_corr_nd5_fhc_nue[irow]=err;
-//    h_err_corr_nd5_fhc_nue->SetBinContent( irow+1, err);
+//    double err = err_corr[ 40 + irow ];
+//    err_corr_nue[irow]=err;
+//    h_err_corr_nue->SetBinContent( irow+1, err);
 //  } 
-//  double err_corr_nd5_fhc_anue[ 20 ];
-//  TH1D* h_err_corr_nd5_fhc_anue = new TH1D("h_err_corr_nd5_fhc_anue", "h_err_corr_nd5_fhc_anue", nBinsFlav, 0, nBinsFlav);
+//  double err_corr_anue[ 20 ];
+//  TH1D* h_err_corr_anue = new TH1D("h_err_corr_anue", "h_err_corr_anue", nBinsFlav, 0, nBinsFlav);
 //  for( int irow=0; irow<20; irow++ ){
-//    double err = err_corr_nd5_fhc[ 60 + irow ];
-//    err_corr_nd5_fhc_anue[irow]=err;
-//    h_err_corr_nd5_fhc_anue->SetBinContent( irow+1, err);
+//    double err = err_corr_[ 60 + irow ];
+//    err_corr_anue[irow]=err;
+//    h_err_corr_anue->SetBinContent( irow+1, err);
 //  }
 //
 
 
 
-  double err_corr_nd5_fhc_numu[ nBinsFlav ];
-  TH1D* h_err_corr_nd5_fhc_numu = new TH1D("h_err_corr_nd5_fhc_numu", "h_err_corr_nd5_fhc_numu", nbins, bins);
-
+  double err_corr_numu[ nBinsFlav ];
+  TH1D* h_err_corr_numu = new TH1D("h_err_corr_numu", "h_err_corr_numu", nbins, bins);
   for( int irow=0; irow<19; irow++ ){  // not plotting overflow bin 20
-    double err = err_corr_nd5_fhc[ 0 + irow ];
-    err_corr_nd5_fhc_numu[irow] = err;
-    h_err_corr_nd5_fhc_numu->SetBinContent( irow+1, err); 
+    double err = err_corr[ 0 + irow ];
+    err_corr_numu[irow] = err;
+    h_err_corr_numu->SetBinContent( irow+1, err); 
   }
-  std::cout<<"dddbug2" <<std::endl;
 
-  double err_corr_nd5_fhc_anumu[ 20 ];
-  TH1D* h_err_corr_nd5_fhc_anumu = new TH1D("h_err_corr_nd5_fhc_anumu", "h_err_corr_nd5_fhc_anumu", nbins, bins);
-
+  double err_corr_anumu[ 20 ];
+  TH1D* h_err_corr_anumu = new TH1D("h_err_corr_anumu", "h_err_corr_anumu", nbins, bins);
   for( int irow=0; irow<19; irow++ ){
-    double err = err_corr_nd5_fhc[ 20 + irow ];
-    err_corr_nd5_fhc_anumu[irow]=err;
-    h_err_corr_nd5_fhc_anumu->SetBinContent( irow+1, err);
+    double err = err_corr[ 20 + irow ];
+    err_corr_anumu[irow]=err;
+    h_err_corr_anumu->SetBinContent( irow+1, err);
   }
-  double err_corr_nd5_fhc_nue[ 20 ];
-  TH1D* h_err_corr_nd5_fhc_nue = new TH1D("h_err_corr_nd5_fhc_nue", "h_err_corr_nd5_fhc_nue", nbins, bins);
+
+  double err_corr_nue[ 20 ];
+  TH1D* h_err_corr_nue = new TH1D("h_err_corr_nue", "h_err_corr_nue", nbins, bins);
   for( int irow=0; irow<19; irow++ ){
-    double err = err_corr_nd5_fhc[ 40 + irow ];
-    err_corr_nd5_fhc_nue[irow]=err;
-    h_err_corr_nd5_fhc_nue->SetBinContent( irow+1, err);
+    double err = err_corr[ 40 + irow ];
+    err_corr_nue[irow]=err;
+    h_err_corr_nue->SetBinContent( irow+1, err);
   } 
-  double err_corr_nd5_fhc_anue[ 20 ];
-  TH1D* h_err_corr_nd5_fhc_anue = new TH1D("h_err_corr_nd5_fhc_anue", "h_err_corr_nd5_fhc_anue", nbins, bins);
 
+  double err_corr_anue[ 20 ];
+  TH1D* h_err_corr_anue = new TH1D("h_err_corr_anue", "h_err_corr_anue", nbins, bins);
   for( int irow=0; irow<19; irow++ ){
-    double err = err_corr_nd5_fhc[ 60 + irow ];
-    err_corr_nd5_fhc_anue[irow]=err;
-    h_err_corr_nd5_fhc_anue->SetBinContent( irow+1, err);
+    double err = err_corr[ 60 + irow ];
+    err_corr_anue[irow]=err;
+    h_err_corr_anue->SetBinContent( irow+1, err);
   }
 
 
@@ -742,25 +742,31 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
-  TCanvas* c_err_nd5_fhc = new TCanvas("c_errr_nd5_fhc", "c_err_nd5_fhc", 1000, 1000);
+  TCanvas* c_err =  new TCanvas("c_err", "c_err", 1000, 1000);
   gStyle->SetLineWidth(2);
-  h_err_corr_nd5_fhc_anue->SetLineColor(kCyan+1);
-  h_err_corr_nd5_fhc_anue->SetLineWidth(3);
-  h_err_corr_nd5_fhc_anue->Draw();
-  h_err_corr_nd5_fhc_anue->GetYaxis()->SetRangeUser(0, 0.1); 
-  h_err_corr_nd5_fhc_nue->SetLineColor(kBlue+1);
-  h_err_corr_nd5_fhc_nue->SetLineWidth(3);
-  h_err_corr_nd5_fhc_nue->GetYaxis()->SetTitle("Fractional Error");
-  h_err_corr_nd5_fhc_nue->GetXaxis()->SetTitle("Enu (GeV)");
-  h_err_corr_nd5_fhc_nue->Draw("SAME");
-  h_err_corr_nd5_fhc_anumu->SetLineColor(kOrange+7);
-  h_err_corr_nd5_fhc_anumu->SetLineWidth(3);
-  h_err_corr_nd5_fhc_anumu->Draw("SAME");
-  h_err_corr_nd5_fhc_numu->SetLineColor(kRed+1);
-  h_err_corr_nd5_fhc_numu->SetLineWidth(3);
-  h_err_corr_nd5_fhc_numu->Draw("SAME");
-  h_err_corr_nd5_fhc_numu->GetYaxis()->SetTitle("Fractional Error");
-  h_err_corr_nd5_fhc_numu->GetXaxis()->SetTitle("Enu (GeV)");
+
+  h_err_corr_anue->SetLineColor(kCyan+1);
+  h_err_corr_anue->SetLineWidth(3);
+  h_err_corr_anue->GetYaxis()->SetTitle("Fractional Error");
+  h_err_corr_anue->GetXaxis()->SetTitle("Enu (GeV)");
+  h_err_corr_anue->Draw();
+  h_err_corr_anue->GetYaxis()->SetRangeUser(0, 0.15); 
+
+  h_err_corr_nue->SetLineColor(kBlue+1);
+  h_err_corr_nue->SetLineWidth(3);
+  h_err_corr_nue->GetYaxis()->SetTitle("Fractional Error");
+  h_err_corr_nue->GetXaxis()->SetTitle("Enu (GeV)");
+  h_err_corr_nue->Draw("SAME");
+
+  h_err_corr_anumu->SetLineColor(kOrange+7);
+  h_err_corr_anumu->SetLineWidth(3);
+  h_err_corr_anumu->Draw("SAME");
+
+  h_err_corr_numu->SetLineColor(kRed+1);
+  h_err_corr_numu->SetLineWidth(3);
+  h_err_corr_numu->Draw("SAME");
+  h_err_corr_numu->GetYaxis()->SetTitle("Fractional Error");
+  h_err_corr_numu->GetXaxis()->SetTitle("Enu (GeV)");
  
 
 
@@ -775,19 +781,21 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   const char* save_det_syst_pdf = str_save_det_syst_pdf.c_str();
   const char* save_det_syst_eps = str_save_det_syst_eps.c_str();
 
-  std::cout<<" Debug:  About to save error plots " << std::endl;
+  std::cout<<"About to save error plots " << std::endl;
 
-  c_err_nd5_fhc->SaveAs(save_det_syst_png);
-  c_err_nd5_fhc->SaveAs(save_det_syst_pdf);
-  c_err_nd5_fhc->SaveAs(save_det_syst_eps);
+  c_err->SaveAs(save_det_syst_png);
+  c_err->SaveAs(save_det_syst_pdf);
+  c_err->SaveAs(save_det_syst_eps);
 
-  std::cout<<" Debug:  Should have now error plots " << std::endl;
+  std::cout<<"Should have now error plots " << std::endl;
 
-  delete c_err_nd5_fhc;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
-  delete h_err_corr_nd5_fhc_anue;
+  std::cout<<"-------------------------------" << std::endl;
+
+  delete c_err;
+  delete h_err_corr_anue;
+  delete h_err_corr_anue;
+  delete h_err_corr_anue;
+  delete h_err_corr_anue;
 
   return 0;
 }
