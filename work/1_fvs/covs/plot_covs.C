@@ -179,7 +179,7 @@ int plot_covs(){
   for( int i=0; i< nRow; i++){
     double e = h_cov->GetBinContent(i+1, i+1)  ;
     //std::cout<<" sig = " << sqrt(e) << std::endl;
-    if( sqrt(e) > 0.1 ) std::cout<<"  Sig = "<< sqrt(e) <<",  Row = " << i+1 << std::endl;
+    if( sqrt(e) > 0.15 ) std::cout<<"  Sig = "<< sqrt(e) <<",  Row = " << i+1 << std::endl;
   }
 
 
