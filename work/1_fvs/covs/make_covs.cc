@@ -11,7 +11,7 @@
   bool alttert		= false;
   bool bmpt 		= false;
   bool harp 		= false;
-  bool na61 		= false;		int na61Throws = 100;
+  bool na61 		= false;	int na61Throws = 100;
   bool oaax 		= false;
   bool oaay 		= false;
   bool pbeamx 		= true;
@@ -19,7 +19,7 @@
   bool prodx 		= false;		int prodxThrows = 100;
   bool snextbar		= false;
   bool snleadbar	= false;
-  bool snmult		= false;		int snmultThrows = 100;
+  bool snmult		= false;	int snmultThrows = 100;
 
   std::string save_prefix = "1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5_";
 
