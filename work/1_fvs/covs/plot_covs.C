@@ -27,20 +27,10 @@ int plot_covs(){
 
   // --- XXX --- THINGS TO EDIT --- XXX --- ///
 	
-  const int nbins = 20;
 
-//  const int ndets = (1+1+1+7 + 4)*2 ;
-  const int ndets = 6*2;
-  const int nflavours = 4;
-  const int nBinsPerDet = nbins*nflavours;
+  std::string tag = "./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5";
+  const int ndets = (1+1+1+7 + 4)*2 ;
 
-  bool setMin = false;   const int binMin = 0;
-  bool setMax = false;   const int binMax = 0;
-  const int binOffset = 0;
-  
-  const int nRow =  nflavours* nbins * ndets ;
-  std::cout<<" nRow = " << nRow << std::endl;
-			
 
 //  TFile* TFcov = new TFile("./1_fvs__sk_hk2_nd5_nd9h10__prod_xsec_cov.root");
 //  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("prod_xsec_cov");
@@ -51,8 +41,8 @@ int plot_covs(){
 //  TFile* TFcov = new TFile("./offAxis_Benjamin__sk_nd5_hkToch_hkHak_hkkBis_hhkBoh_oaax_cov.root");
 //  TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get("oaax_cov");
 
+  //const int ndets = ( 6 )*2 ;
 
-  std::string tag = "./1_fvs__sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hhk5";
 
   bool alttert   = false;
   bool bmpt      = false;
@@ -66,6 +56,25 @@ int plot_covs(){
   bool snextbar  = false;
   bool snleadbar = false;
   bool snmult    = false;
+
+
+
+  // --- XXX ---------------------- XXX--- ///		
+ 
+
+
+  const int nflavours = 4;
+  const int nbins = 20;
+  const int nBinsPerDet = nbins*nflavours;
+
+  bool setMin = false;   const int binMin = 0;
+  bool setMax = false;   const int binMax = 0;
+  const int binOffset = 0;
+  
+  const int nRow =  nflavours* nbins * ndets ;
+  std::cout<<" nRow = " << nRow << std::endl;
+
+
 
   if( alttert  ) std::string str_syst = "alttert";
   if( bmpt     ) std::string str_syst = "bmpt";
@@ -88,14 +97,6 @@ int plot_covs(){
 
   TFile* TFcov = new TFile( ch_rootFile );
   TMatrixTSym<double>* matT = (TMatrixTSym<double>*) TFcov->Get( ch_cov );
-
-
-
-
-  std::cout<<" e = " << (*matT)[4][4] << std::endl;
-
-	// --- XXX ---------------------- XXX--- ///		
- 
 
  
   const int det_1_lowBin=1;      const int det_1_highBin=80;  //     numu=1-20, anumu=21-40, nue=41-60, anue=61-80
