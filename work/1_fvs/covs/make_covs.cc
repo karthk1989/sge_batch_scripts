@@ -14,9 +14,9 @@
   bool na61 		= false;		int na61Throws = 100;
   bool oaax 		= false;
   bool oaay 		= false;
-  bool pbeamx 		= false;
+  bool pbeamx 		= true;
   bool pbeamy		= false;
-  bool prodx 		= true;		int prodxThrows = 100;
+  bool prodx 		= false;		int prodxThrows = 100;
   bool snextbar		= false;
   bool snleadbar	= false;
   bool snmult		= false;		int snmultThrows = 100;
