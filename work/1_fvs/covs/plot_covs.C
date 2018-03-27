@@ -44,7 +44,7 @@ int plot_covs(){
   //const int ndets = ( 6 )*2 ;
 
 
-  bool alttert   = false;
+  bool alttert   = true;
   bool bmpt      = false;
   bool harp      = false;
   bool na61      = false;
@@ -52,7 +52,7 @@ int plot_covs(){
   bool oaay      = false;
   bool pbeamx    = false;
   bool pbeamy    = false;
-  bool prodx     = true;
+  bool prodx     = false;
   bool snextbar  = false;
   bool snleadbar = false;
   bool snmult    = false;
@@ -156,14 +156,33 @@ int plot_covs(){
   double max_mac = -9999; int maxRow_mac = -9999;
   for( int i=0; i< nRow; i++){
     double e = h_cov->GetBinContent(i+1, i+1)  ;
-    std::cout<<" h_cov->GetBinContent("<< i+1 <<","<< i+1 <<") = " << e  << std::endl; 
+    //std::cout<<" h_cov->GetBinContent("<< i+1 <<","<< i+1 <<") = " << e  << std::endl; 
     std::cout<<" sig = " << sqrt(e) << std::endl;
     if(e<min_mac){ min_mac = e; minRow_mac=i+1;}
     if(e>max_mac){ max_mac = e; maxRow_mac=i+1;}
   }
+
+  std::cout<<" "<<std::endl;
+  std::cout<<" Largest error (sqrt cov diag) "<<std::endl;
+  std::cout<<" "<<std::endl;
+  std::cout<<" -> Where first bin is numbered from 1"<<std::endl;
+  std::cout<<" "<<std::endl;
   std::cout<<" Inside plot_covs:   min = "<< min_mac << ", sig = "<< sqrt(min_mac) << ":    minRow = " << minRow_mac << std::endl;
   std::cout<<" Inside plot_covs:   max = "<< max_mac << ", sig = "<< sqrt(max_mac) << ":      maxRow = " << maxRow_mac << std::endl;
-  std::cout<<"  NOTE - this is just for the diagonalsi, whereas covers all elements " << std::endl;
+  std::cout<<" " << std::endl;
+
+
+  std::cout<<" " << std::endl;
+  std::cout<<" " << std::endl;
+  std::cout<<" " << std::endl;
+
+  for( int i=0; i< nRow; i++){
+    double e = h_cov->GetBinContent(i+1, i+1)  ;
+    //std::cout<<" sig = " << sqrt(e) << std::endl;
+    if( sqrt(e) > 0.1 ) std::cout<<"  Sig = "<< sqrt(e) <<",  Row = " << i+1 << std::endl;
+  }
+
+
 
   std::cout<<""<<std::endl;
   std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
@@ -302,18 +321,6 @@ int plot_covs(){
 
 
 
-//  // Plot full correlation matrix
-//
-//  TCanvas* c_corr_small = new TCanvas("prod_xsec_corr_small", "prod_xsec_corr_small", 1000, 1000);
-//  gPad->SetRightMargin(0.16);
-//  gStyle->SetOptStat(0);  // remove title
-//  gStyle->SetOptTitle(0); // remove stat box
-//  h_corr->Draw("colz");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.png");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.pdf");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.eps");
-
-
 
 
 
@@ -441,7 +448,7 @@ int plot_covs(){
 
 
 
-
+exit();
 //sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5
 
 
