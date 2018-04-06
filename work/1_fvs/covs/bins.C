@@ -1,5 +1,22 @@
+//
+//  NOTE:  For the histograms   _NOM_.root   and   _SYST_X.root: 
+//
+//               bin(1)  - first energy bin
+//               bin(19) - last energy bin	
+//               bin(02) - overflow bin 
+//
+//               --> this applies too the cov too   cov(20,20) will be an overflow energy bin
+//
+//  XXX ENERGY BIN 20 IS OVERFLOW XXX //
+
+
+
+
+
 {
 
+
+// produces readout of full set of bin numbers
   int binLow=1;
   for( int i=1; i<31; i++ ){
     
@@ -16,6 +33,8 @@
   std::cout<<""<<std::endl;
 
 
+
+// produces alternate readout of full set of bin numbers
   binLow=1;
     for( int i=1; i<31; i++ ){
 
@@ -29,6 +48,3 @@
   }
 
 
-
-
-}

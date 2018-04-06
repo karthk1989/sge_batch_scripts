@@ -44,7 +44,7 @@ int plot_covs(){
   //const int ndets = ( 6 )*2 ;
 
 
-  bool alttert   = true;
+  bool alttert   = false;
   bool bmpt      = false;
   bool harp      = false;
   bool na61      = false;
@@ -54,7 +54,7 @@ int plot_covs(){
   bool pbeamy    = false;
   bool prodx     = false;
   bool snextbar  = false;
-  bool snleadbar = false;
+  bool snleadbar = true;
   bool snmult    = false;
 
 
