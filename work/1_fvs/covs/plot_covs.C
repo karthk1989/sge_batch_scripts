@@ -44,7 +44,7 @@ int plot_covs(){
   //const int ndets = ( 6 )*2 ;
 
 
-  bool alttert   = false;
+  bool alttert   = true;
   bool bmpt      = false;
   bool harp      = false;
   bool na61      = false;
@@ -54,7 +54,7 @@ int plot_covs(){
   bool pbeamy    = false;
   bool prodx     = false;
   bool snextbar  = false;
-  bool snleadbar = true;
+  bool snleadbar = false;
   bool snmult    = false;
 
 
@@ -173,15 +173,17 @@ int plot_covs(){
 
 
   std::cout<<" " << std::endl;
-  std::cout<<" " << std::endl;
-  std::cout<<" " << std::endl;
+  std::cout<<" ----------------------------" << std::endl;
+  std::cout<<"Checking for errors over 15%  " << std::endl;
 
   for( int i=0; i< nRow; i++){
     double e = h_cov->GetBinContent(i+1, i+1)  ;
     //std::cout<<" sig = " << sqrt(e) << std::endl;
     if( sqrt(e) > 0.15 ) std::cout<<"  Sig = "<< sqrt(e) <<",  Row = " << i+1 << std::endl;
   }
-
+  std::cout<<" " << std::endl;
+  std::cout<<" " << std::endl;
+  std::cout<<" ----------------------------" << std::endl;
 
 
   std::cout<<""<<std::endl;
@@ -658,6 +660,9 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   double var_det[ nBinsPerDet ];
   double err_corr[ nBinsPerDet ];
 
+
+  // This includes overflow bin for each flavour  nBinsPerDet = 4 * 20  
+
   for( int irow=0; irow<nBinsPerDet; irow++){
 
     // h_cov starts at bin1, array starts at element 0
@@ -674,6 +679,9 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
   const int nBinsFlav=20;
 
+
+    // bins 1-19 are Energy bins
+    // bin 20  is overflow
 
     int nbins = 19;
    double bins[20] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0, 1.2, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 7.0, 10.0};
@@ -714,7 +722,15 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 //
 
 
-  
+  // Energy bins  1-19 [0-18]
+  // Overflow bin 20   [19]
+
+  // nBinsPerDet = 20* 40 = ( 19 +1 )*4
+
+  // numu  [ 0-18]  [overflow 19]
+  // anumu [20-38]  [overflow 39]
+  // nue   [40-58]  [overflow 49]
+  // anue  [60-78]  [overflow 79]
 
 
   std::string  str_hist_err_det = str_det +":  "+ str_syst;
@@ -763,10 +779,24 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
-  double max=0.0;
+  double max=1.0;
 
-  if( str_syst=="prodx" ) max = 0.2;
   if( str_syst=="alttert") max = 0.3;
+  if( str_syst=="na61")    max = 0.4;
+  if( str_syst=="bmpt")    max = 0.5;
+  if( str_syst=="harp")    max = 0.1;
+  if( str_syst=="oaax")    max = 1.0;
+  if( str_syst=="oaay")    max = 1.0;
+  if( str_syst=="pbeamx")    max = 0.4;
+  if( str_syst=="pbeamy")    max = 0.4;
+  if( str_syst=="prodx")    max = 0.2;
+  if( str_syst=="snextbar")    max = 0.1;
+  if( str_syst=="snleadbar")    max = 0.2;
+  if( str_syst=="snmult")    max = 0.1;
+
+
+
+
 //  if( h_err_corr_anue->GetMaximum() >  max)  max = h_err_corr_anue->GetMaximum() ;
 //  if( h_err_corr_nue->GetMaximum() >  max)   max = h_err_corr_nue->GetMaximum() ;
 //  if( h_err_corr_anumu->GetMaximum() >  max) max = h_err_corr_numu->GetMaximum() ;

@@ -1,13 +1,10 @@
+//  1_sk_fhc  1_sk_rhc
+//  2_hktoch_fhc  2_hktoch_rhc
 //
-//  NOTE:  For the histograms   _NOM_.root   and   _SYST_X.root: 
 //
-//               bin(1)  - first energy bin
-//               bin(19) - last energy bin	
-//               bin(02) - overflow bin 
+//	
 //
-//               --> this applies too the cov too   cov(20,20) will be an overflow energy bin
-//
-//  XXX ENERGY BIN 20 IS OVERFLOW XXX //
+
 
 {
 

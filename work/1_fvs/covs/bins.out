@@ -1,14 +1,3 @@
-//
-//  NOTE:  For the histograms   _NOM_.root   and   _SYST_X.root: 
-//
-//               bin(1)  - first energy bin
-//               bin(19) - last energy bin	
-//               bin(02) - overflow bin 
-//
-//               --> this applies too the cov too   cov(20,20) will be an overflow energy bin
-//
-//  XXX ENERGY BIN 20 IS OVERFLOW XXX //
-
 
 det 1:    low bin= 1     high bin= 80:     numu=1-20,      anumu=21-40,     nue=41-60,     anue=61-80
 det 2:    low bin= 81    high bin= 160:    numu=81-100,    anumu=101-120,   nue=121-140,   anue=141-160
