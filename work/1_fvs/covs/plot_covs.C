@@ -44,7 +44,7 @@ int plot_covs(){
   //const int ndets = ( 6 )*2 ;
 
 
-  bool alttert   = false;
+  bool alttert   = true;
   bool bmpt      = false;
   bool harp      = false;
   bool na61      = false;
@@ -52,7 +52,7 @@ int plot_covs(){
   bool oaay      = false;
   bool pbeamx    = false;
   bool pbeamy    = false;
-  bool prodx     = true;
+  bool prodx     = false;
   bool snextbar  = false;
   bool snleadbar = false;
   bool snmult    = false;
@@ -156,14 +156,35 @@ int plot_covs(){
   double max_mac = -9999; int maxRow_mac = -9999;
   for( int i=0; i< nRow; i++){
     double e = h_cov->GetBinContent(i+1, i+1)  ;
-    std::cout<<" h_cov->GetBinContent("<< i+1 <<","<< i+1 <<") = " << e  << std::endl; 
+    //std::cout<<" h_cov->GetBinContent("<< i+1 <<","<< i+1 <<") = " << e  << std::endl; 
     std::cout<<" sig = " << sqrt(e) << std::endl;
     if(e<min_mac){ min_mac = e; minRow_mac=i+1;}
     if(e>max_mac){ max_mac = e; maxRow_mac=i+1;}
   }
+
+  std::cout<<" "<<std::endl;
+  std::cout<<" Largest error (sqrt cov diag) "<<std::endl;
+  std::cout<<" "<<std::endl;
+  std::cout<<" -> Where first bin is numbered from 1"<<std::endl;
+  std::cout<<" "<<std::endl;
   std::cout<<" Inside plot_covs:   min = "<< min_mac << ", sig = "<< sqrt(min_mac) << ":    minRow = " << minRow_mac << std::endl;
   std::cout<<" Inside plot_covs:   max = "<< max_mac << ", sig = "<< sqrt(max_mac) << ":      maxRow = " << maxRow_mac << std::endl;
-  std::cout<<"  NOTE - this is just for the diagonalsi, whereas covers all elements " << std::endl;
+  std::cout<<" " << std::endl;
+
+
+  std::cout<<" " << std::endl;
+  std::cout<<" ----------------------------" << std::endl;
+  std::cout<<"Checking for errors over 15%  " << std::endl;
+
+  for( int i=0; i< nRow; i++){
+    double e = h_cov->GetBinContent(i+1, i+1)  ;
+    //std::cout<<" sig = " << sqrt(e) << std::endl;
+    if( sqrt(e) > 0.15 ) std::cout<<"  Sig = "<< sqrt(e) <<",  Row = " << i+1 << std::endl;
+  }
+  std::cout<<" " << std::endl;
+  std::cout<<" " << std::endl;
+  std::cout<<" ----------------------------" << std::endl;
+
 
   std::cout<<""<<std::endl;
   std::cout<<" Check the TH2D has filled from the TMatrixTStm correctly"<<std::endl;
@@ -302,18 +323,6 @@ int plot_covs(){
 
 
 
-//  // Plot full correlation matrix
-//
-//  TCanvas* c_corr_small = new TCanvas("prod_xsec_corr_small", "prod_xsec_corr_small", 1000, 1000);
-//  gPad->SetRightMargin(0.16);
-//  gStyle->SetOptStat(0);  // remove title
-//  gStyle->SetOptTitle(0); // remove stat box
-//  h_corr->Draw("colz");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.png");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.pdf");
-//  c_corr_small->SaveAs("prod_xsec_corr_small.eps");
-
-
 
 
 
@@ -441,7 +450,7 @@ int plot_covs(){
 
 
 
-
+exit();
 //sk_nd5_nd2_nd9h7p7_hk2_hk3_hkk4_hkk5
 
 
@@ -651,6 +660,9 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
   double var_det[ nBinsPerDet ];
   double err_corr[ nBinsPerDet ];
 
+
+  // This includes overflow bin for each flavour  nBinsPerDet = 4 * 20  
+
   for( int irow=0; irow<nBinsPerDet; irow++){
 
     // h_cov starts at bin1, array starts at element 0
@@ -667,6 +679,9 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
   const int nBinsFlav=20;
 
+
+    // bins 1-19 are Energy bins
+    // bin 20  is overflow
 
     int nbins = 19;
    double bins[20] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0, 1.2, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0, 7.0, 10.0};
@@ -707,7 +722,15 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 //
 
 
-  
+  // Energy bins  1-19 [0-18]
+  // Overflow bin 20   [19]
+
+  // nBinsPerDet = 20* 40 = ( 19 +1 )*4
+
+  // numu  [ 0-18]  [overflow 19]
+  // anumu [20-38]  [overflow 39]
+  // nue   [40-58]  [overflow 49]
+  // anue  [60-78]  [overflow 79]
 
 
   std::string  str_hist_err_det = str_det +":  "+ str_syst;
@@ -756,10 +779,24 @@ int getErrosFromCov( TH2D* h_cov,  const int lowBin, const int highBin, const in
 
 
 
-  double max=0.0;
+  double max=1.0;
 
-  if( str_syst=="prodx" ) max = 0.2;
   if( str_syst=="alttert") max = 0.3;
+  if( str_syst=="na61")    max = 0.4;
+  if( str_syst=="bmpt")    max = 0.5;
+  if( str_syst=="harp")    max = 0.1;
+  if( str_syst=="oaax")    max = 1.0;
+  if( str_syst=="oaay")    max = 1.0;
+  if( str_syst=="pbeamx")    max = 0.4;
+  if( str_syst=="pbeamy")    max = 0.4;
+  if( str_syst=="prodx")    max = 0.2;
+  if( str_syst=="snextbar")    max = 0.1;
+  if( str_syst=="snleadbar")    max = 0.2;
+  if( str_syst=="snmult")    max = 0.1;
+
+
+
+
 //  if( h_err_corr_anue->GetMaximum() >  max)  max = h_err_corr_anue->GetMaximum() ;
 //  if( h_err_corr_nue->GetMaximum() >  max)   max = h_err_corr_nue->GetMaximum() ;
 //  if( h_err_corr_anumu->GetMaximum() >  max) max = h_err_corr_numu->GetMaximum() ;
