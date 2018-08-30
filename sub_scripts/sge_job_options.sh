@@ -92,7 +92,7 @@
   hkkboh_5_RHCDIR=/data/hyperk/fluxes/flukaFluxSet_allConfig/5_hkkboh/neg
 
 #  OUT=${WORKDIR}/nominal_outputs
-  OUT_BASE=/data/hyperk/fluxes/flukaFluxSet_allConfig/flux_tuning/error_scripts/new_new_scripts/test_2_throws  
+  OUT_BASE=/data/hyperk/fluxes/flukaFluxSet_allConfig/flux_tuning/error_scripts/sge_batch_scripts_work/  
 
    #check if output directory exists.  If not make it
  if [[ -d ${OUT_BASE} ]]; then
